@@ -16,8 +16,9 @@
 		<ActiveObjectClass>
 			<Id>1623032419016</Id>
 			<Name><![CDATA[Main]]></Name>
+			<Description><![CDATA[初始化工厂]]></Description>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<StartupCode><![CDATA[// initialize factory
+			<StartupCode><![CDATA[// 初始化工厂。用工厂的经纬度（参数）创建GIS点，将其设置成工厂的位置
 GISPoint factoryGIS = 
 	new GISPoint(map, LatitudeOfFactory, LongitudeOfFactory);
 factory.setLocation(factoryGIS);]]></StartupCode>
@@ -117,6 +118,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623035393452</Id>
 					<Name><![CDATA[LongitudeOfFactory]]></Name>
+					<Description><![CDATA[工厂经度]]></Description>
 					<X>-190</X><Y>260</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -138,6 +140,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623035415276</Id>
 					<Name><![CDATA[LatitudeOfFactory]]></Name>
+					<Description><![CDATA[工厂纬度]]></Description>
 					<X>-190</X><Y>290</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -159,6 +162,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291973942</Id>
 					<Name><![CDATA[capacityOfWarehouse]]></Name>
+					<Description><![CDATA[批发商仓库容量]]></Description>
 					<X>-190</X><Y>320</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -183,6 +187,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291973948</Id>
 					<Name><![CDATA[SSOfWarehouse]]></Name>
+					<Description><![CDATA[批发商安全库存（定量订货）]]></Description>
 					<X>-190</X><Y>410</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -207,6 +212,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291973952</Id>
 					<Name><![CDATA[orderModeOfWarehouse]]></Name>
+					<Description><![CDATA[批发商订货模式]]></Description>
 					<X>-190</X><Y>350</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -228,6 +234,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291973956</Id>
 					<Name><![CDATA[orderCycleTimeOfWarehouse]]></Name>
+					<Description><![CDATA[批发商订货周期（定期订货）]]></Description>
 					<X>-190</X><Y>380</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -249,6 +256,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623327985467</Id>
 					<Name><![CDATA[capacityOfRetailer]]></Name>
+					<Description><![CDATA[零售商仓库容量]]></Description>
 					<X>-190</X><Y>440</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -273,6 +281,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623327985474</Id>
 					<Name><![CDATA[takeModeOfRetailer]]></Name>
+					<Description><![CDATA[零售商取货模式]]></Description>
 					<X>-190</X><Y>470</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -294,6 +303,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332416510</Id>
 					<Name><![CDATA[avgDemand]]></Name>
+					<Description><![CDATA[零售商需求均值]]></Description>
 					<X>-190</X><Y>500</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -315,6 +325,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332426821</Id>
 					<Name><![CDATA[devDemand]]></Name>
+					<Description><![CDATA[零售商需求标准差]]></Description>
 					<X>-190</X><Y>530</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -336,6 +347,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332435006</Id>
 					<Name><![CDATA[truckCapacityOfFactory]]></Name>
+					<Description><![CDATA[工厂卡车容量]]></Description>
 					<X>-190</X><Y>560</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -357,6 +369,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332458295</Id>
 					<Name><![CDATA[truckCapacityOfWholesaler]]></Name>
+					<Description><![CDATA[仓库卡车容量]]></Description>
 					<X>-190</X><Y>590</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -378,6 +391,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332463771</Id>
 					<Name><![CDATA[truckCapacityOfRetailer]]></Name>
+					<Description><![CDATA[零售商卡车容量]]></Description>
 					<X>-190</X><Y>620</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -590,6 +604,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623034843633</Id>
 					<Name><![CDATA[factory]]></Name>
+					<Description><![CDATA[设置工厂参数，包括经纬度和容量]]></Description>
 					<X>10</X><Y>500</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -670,6 +685,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623080052552</Id>
 					<Name><![CDATA[wholesaler]]></Name>
+					<Description><![CDATA[从数据库中导入批发商的信息。为批发商设置参数，包括经纬度、名字、仓库容量、安全库存（定量订货）、订货模式、订货周期时间（定期订货）、上游供应商（工厂，为模型可扩展性设计）、卡车容量]]></Description>
 					<X>10</X><Y>540</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -837,6 +853,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623248336133</Id>
 					<Name><![CDATA[retailer]]></Name>
+					<Description><![CDATA[从数据库中导入零售商的信息。为零售商设置参数，包括经纬度、名字、上游供应商、仓库容量、取货模式、卡车容量、需求的均值与标准差]]></Description>
 					<X>120</X><Y>580</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1250,6 +1267,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623034899074</Id>
 					<Name><![CDATA[longitude]]></Name>
+					<Description><![CDATA[经度]]></Description>
 					<X>10</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1271,6 +1289,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623034960136</Id>
 					<Name><![CDATA[latitude]]></Name>
+					<Description><![CDATA[工厂的纬度]]></Description>
 					<X>10</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1292,6 +1311,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332624184</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
+					<Description><![CDATA[工厂卡车的容量]]></Description>
 					<X>10</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1315,6 +1335,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Port>
 					<Id>1623044853642</Id>
 					<Name><![CDATA[deliver]]></Name>
+					<Description><![CDATA[端口收到的消息包括要运送的目的地和数量，将这两个量传给卡车]]></Description>
 					<X>200</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -1330,6 +1351,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<AgentLink>
 					<Id>1623032524873</Id>
 					<Name><![CDATA[connections]]></Name>
+					<Description><![CDATA[卡车到达目的地，传回消息。告知到达的智能体以及送货的数量]]></Description>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1368,6 +1390,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623033718691</Id>
 					<Name><![CDATA[truck]]></Name>
+					<Description><![CDATA[工厂的卡车。速度为60km/h。为其设置容量和起点（即工厂）。它位于供应链的第一层]]></Description>
 					<X>10</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1628,6 +1651,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623252849210</Id>
 					<Name><![CDATA[currentInventory]]></Name>
+					<Description><![CDATA[目前的库存]]></Description>
 					<X>10</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1643,6 +1667,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623253080066</Id>
 					<Name><![CDATA[numOfUnfulfilledOrder]]></Name>
+					<Description><![CDATA[零售商因为批发商库存不足而没有能够被及时满足的订单]]></Description>
 					<X>10</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1655,6 +1680,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623292692820</Id>
 					<Name><![CDATA[leadTime]]></Name>
+					<Description><![CDATA[提前期（用于统计）]]></Description>
 					<X>10</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1667,6 +1693,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623292841589</Id>
 					<Name><![CDATA[sendTime]]></Name>
+					<Description><![CDATA[发出订单的时间（用于统计提前期）]]></Description>
 					<X>10</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1679,6 +1706,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623292861732</Id>
 					<Name><![CDATA[receiveTime]]></Name>
+					<Description><![CDATA[接受订单的时间（用于统计提前期）]]></Description>
 					<X>10</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1691,6 +1719,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623293805089</Id>
 					<Name><![CDATA[allDemand]]></Name>
+					<Description><![CDATA[下游需求总和]]></Description>
 					<X>10</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1706,6 +1735,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623297458589</Id>
 					<Name><![CDATA[numOfAbandonedInventory]]></Name>
+					<Description><![CDATA[因为下单过多以及仓库容量限制而被丢弃的库存]]></Description>
 					<X>10</X><Y>510</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1721,6 +1751,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623307025018</Id>
 					<Name><![CDATA[numOfOrderOfRetailer]]></Name>
+					<Description><![CDATA[零售商下单量]]></Description>
 					<X>10</X><Y>480</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1733,6 +1764,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623313936316</Id>
 					<Name><![CDATA[numOfOrderToFactory]]></Name>
+					<Description><![CDATA[向工厂的下单量]]></Description>
 					<X>180</X><Y>570</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1745,6 +1777,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623378421088</Id>
 					<Name><![CDATA[isLastOrderReceived]]></Name>
+					<Description><![CDATA[最后发送给工厂的订单是否送达（防止因为需求不足重复下单）]]></Description>
 					<X>100</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1760,6 +1793,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623043392132</Id>
 					<Name><![CDATA[longitude]]></Name>
+					<Description><![CDATA[批发商经度]]></Description>
 					<X>10</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1781,6 +1815,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623043392138</Id>
 					<Name><![CDATA[latitude]]></Name>
+					<Description><![CDATA[批发商纬度]]></Description>
 					<X>10</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1802,6 +1837,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623248290453</Id>
 					<Name><![CDATA[name]]></Name>
+					<Description><![CDATA[批发商名字]]></Description>
 					<X>10</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1823,6 +1859,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623252575411</Id>
 					<Name><![CDATA[capacity]]></Name>
+					<Description><![CDATA[批发商仓库容量]]></Description>
 					<X>10</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1847,6 +1884,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623290330114</Id>
 					<Name><![CDATA[SS]]></Name>
+					<Description><![CDATA[批发商安全库存]]></Description>
 					<X>10</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1871,6 +1909,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291748009</Id>
 					<Name><![CDATA[orderMode]]></Name>
+					<Description><![CDATA[批发商订货模式]]></Description>
 					<X>10</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1892,6 +1931,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291795395</Id>
 					<Name><![CDATA[orderCycleTime]]></Name>
+					<Description><![CDATA[批发商订货周期（定期订货）]]></Description>
 					<X>10</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1913,6 +1953,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623292210494</Id>
 					<Name><![CDATA[upstreamVender]]></Name>
+					<Description><![CDATA[批发商上游供应商（即工厂）]]></Description>
 					<X>10</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1934,6 +1975,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332665766</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
+					<Description><![CDATA[批发商卡车容量]]></Description>
 					<X>10</X><Y>630</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1955,6 +1997,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1623372272218</Id>
 					<Name><![CDATA[orderCollection]]></Name>
+					<Description><![CDATA[订单集合。零售商以及其下单的数量]]></Description>
 					<X>10</X><Y>660</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -1972,6 +2015,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Port>
 					<Id>1623065854815</Id>
 					<Name><![CDATA[receive]]></Name>
+					<Description><![CDATA[收到货物后，首先查看是否爆仓，再依次满足订单集合中的订单，最后判断是否要再次下单]]></Description>
 					<X>100</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -1980,24 +2024,26 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Agent, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Agent, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (this == msg.getFirst())
+					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 确认信息是发给自己的
 {
-	isLastOrderReceived = true;
-	currentInventory += msg.getSecond();
-	
+	isLastOrderReceived = true; // 收到货物，更新该状态
+	currentInventory += msg.getSecond(); // 库存更新
+	// 如果爆仓
 	if (currentInventory > capacity)
 	{
+		// 计算丢弃量、更新统计量并丢弃爆仓的库存
 		numOfAbandonedInventory += (currentInventory - capacity);
 		avgAbandonedInventory.update();
 		currentInventory = capacity;
 	}
+	// 统计量更新
 	receiveTime = time();
 	leadTime = (receiveTime - sendTime) / 24;
 	avgLeadTime.update();
-
+	
+	// 依次满足订单集合
 	while (!orderCollection.isEmpty() && currentInventory >= orderCollection.getFirst().getSecond())
 	{
-		// traceln(amount); // for test
 		double sendAmount = orderCollection.getFirst().getSecond();
 		currentInventory -= sendAmount;
 		deliver.send(new Pair<Retailer, Double>(
@@ -2014,6 +2060,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 			currentInventory = 0;
 		}
 	}
+	
+	// 如果货物再次不足，就再次下单，同deliver接口中的处理
 	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
 	{
 		if (orderMode == 1 && isLastOrderReceived == true)
@@ -2028,6 +2076,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Port>
 					<Id>1623290234560</Id>
 					<Name><![CDATA[order]]></Name>
+					<Description><![CDATA[向工厂下单，下单时记录时间，便于统计提前期]]></Description>
 					<X>160</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -2041,6 +2090,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Port>
 					<Id>1623324626708</Id>
 					<Name><![CDATA[deliver]]></Name>
+					<Description><![CDATA[收到需求后，根据仓库库存进行配送。]]></Description>
 					<X>210</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -2049,37 +2099,37 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Retailer, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Retailer, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (msg.getFirst().wholesaler == this.name)
+					<OnReceiveAction><![CDATA[if (msg.getFirst().wholesaler == this.name) // 确认是发给自己的消息
 {
-	// traceln(msg.toString()); // for test
-	numOfOrderOfRetailer ++;
-	allDemand += msg.getSecond();
+	numOfOrderOfRetailer ++; // 来自零售商的订单数量+1
+	allDemand += msg.getSecond(); // 更新总需求
+	// 如果需求量超过了仓库库存
 	if (currentInventory - msg.getSecond() < 0)
 	{
 		double amount = msg.getSecond();
 		if (currentInventory > 0)
 		{
-			truck.deliver(msg.getFirst(), currentInventory);
+			truck.deliver(msg.getFirst(), currentInventory); // 先运送仓库有的量
 			currentInventory = 0;
 			amount -= currentInventory;
 		}
-		numOfUnfulfilledOrder ++;
-		unfulfillRatio.update();
+		numOfUnfulfilledOrder ++; // 需求未被及时满足
+		unfulfillRatio.update(); // 更新统计量
 		orderCollection.addLast(new Pair(
-			msg.getFirst(), amount));
+			msg.getFirst(), amount)); // 订单集合中加入未被满足的零售商及货物量
 	}
 	else
 	{
-		truck.deliver(msg.getFirst(), msg.getSecond());
+		truck.deliver(msg.getFirst(), msg.getSecond()); // 库存充足，直接让卡车进行配送
 		currentInventory -= msg.getSecond();
 	}
-	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
+	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS) // 到达再订货点
 	{
-		if (orderMode == 1 && isLastOrderReceived == true)
+		if (orderMode == 1 && isLastOrderReceived == true) // 如果是定量订货，且上次下的单已经到达
 		{
-			order.send(new Pair(this, capacity));
-			numOfOrderToFactory ++;
-			isLastOrderReceived = false;
+			order.send(new Pair(this, capacity)); // 向工厂下单
+			numOfOrderToFactory ++; // 更新统计量
+			isLastOrderReceived = false; // 更新订单到达状态
 		}
 	}
 }]]></OnReceiveAction>
@@ -2127,6 +2177,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Event>
 					<Id>1623293296143</Id>
 					<Name><![CDATA[check]]></Name>
+					<Description><![CDATA[定期订货模式中，每循环周期进行下单]]></Description>
 					<X>10</X><Y>600</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2164,6 +2215,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<Statistics>
 					<Id>1623292965783</Id>
 					<Name><![CDATA[avgLeadTime]]></Name>
+					<Description><![CDATA[平均提前期]]></Description>
 					<X>10</X><Y>360</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2186,6 +2238,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<Statistics>
 					<Id>1623308006031</Id>
 					<Name><![CDATA[unfulfillRatio]]></Name>
+					<Description><![CDATA[未被满足的订单比例（1 - 服务水平）]]></Description>
 					<X>10</X><Y>540</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2208,6 +2261,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<Statistics>
 					<Id>1623308117767</Id>
 					<Name><![CDATA[avgAbandonedInventory]]></Name>
+					<Description><![CDATA[平均被丢弃的货物]]></Description>
 					<X>10</X><Y>570</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2230,6 +2284,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<Statistics>
 					<Id>1623386392238</Id>
 					<Name><![CDATA[avgDemand]]></Name>
+					<Description><![CDATA[下游平均每天的需求]]></Description>
 					<X>90</X><Y>390</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2254,6 +2309,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<AgentLink>
 					<Id>1623032625121</Id>
 					<Name><![CDATA[connections]]></Name>
+					<Description><![CDATA[卡车送达后，告诉批发商，再由批发商告诉零售商订单送达（由于需要通过接口建模，卡车直接通知零售商不易实现）]]></Description>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2292,6 +2348,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623323602045</Id>
 					<Name><![CDATA[truck]]></Name>
+					<Description><![CDATA[批发商的卡车]]></Description>
 					<X>-30</X><Y>30</Y>
 					<Label><X>-20</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2749,6 +2806,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623325306253</Id>
 					<Name><![CDATA[leadTime]]></Name>
+					<Description><![CDATA[零售商的提前期（临时变量，用于计算平均值）]]></Description>
 					<X>20</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2761,6 +2819,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="PlainVariable">
 					<Id>1623325649156</Id>
 					<Name><![CDATA[numOfOrderToWholesaler]]></Name>
+					<Description><![CDATA[零售商向批发商发起的订单数量]]></Description>
 					<X>20</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2773,6 +2832,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623248372208</Id>
 					<Name><![CDATA[longitude]]></Name>
+					<Description><![CDATA[零售商经度]]></Description>
 					<X>20</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2794,6 +2854,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623248372214</Id>
 					<Name><![CDATA[latitude]]></Name>
+					<Description><![CDATA[零售商纬度]]></Description>
 					<X>20</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2815,6 +2876,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623248372218</Id>
 					<Name><![CDATA[name]]></Name>
+					<Description><![CDATA[零售商名字]]></Description>
 					<X>20</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2836,6 +2898,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623248382235</Id>
 					<Name><![CDATA[wholesaler]]></Name>
+					<Description><![CDATA[零售商上游批发商的名字]]></Description>
 					<X>20</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2857,6 +2920,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623325341370</Id>
 					<Name><![CDATA[capacity]]></Name>
+					<Description><![CDATA[零售商仓库容量]]></Description>
 					<X>20</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2878,6 +2942,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623328150747</Id>
 					<Name><![CDATA[takeMode]]></Name>
+					<Description><![CDATA[零售商取货模式]]></Description>
 					<X>20</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2899,6 +2964,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332706989</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
+					<Description><![CDATA[零售商卡车容量]]></Description>
 					<X>20</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2920,6 +2986,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332827559</Id>
 					<Name><![CDATA[avgDemand]]></Name>
+					<Description><![CDATA[零售商需求均值]]></Description>
 					<X>20</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2941,6 +3008,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623332838126</Id>
 					<Name><![CDATA[devDemand]]></Name>
+					<Description><![CDATA[零售商需求标准差]]></Description>
 					<X>20</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2962,6 +3030,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="CollectionVariable">
 					<Id>1623331556575</Id>
 					<Name><![CDATA[orderCollection]]></Name>
+					<Description><![CDATA[零售商的需求集合。第一个值是需求的数量，第二个值是需求发送的时间]]></Description>
 					<X>20</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2979,6 +3048,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Port>
 					<Id>1623324860828</Id>
 					<Name><![CDATA[receive]]></Name>
+					<Description><![CDATA[收到货物后，依次满足订单集合中的需求。统计量更新]]></Description>
 					<X>160</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -2987,19 +3057,19 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Retailer, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Retailer, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[// traceln(msg.toString()); // for test
-if (this == msg.getFirst())
+					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 确认货物是送给该零售商的
 {
-	double amount = msg.getSecond();
+	double amount = msg.getSecond(); // 记录送达了多少数量
+	// 依次满足需求集合里的需求
 	while (!orderCollection.isEmpty() && amount >= orderCollection.getFirst().getFirst())
 	{
-		// traceln(amount); // for test
 		amount -= orderCollection.getFirst().getFirst();
-		leadTime = (time() - orderCollection.getFirst().getSecond()) / 24;
-		statisticsLeadTime.update();
-		histogramleadTime.update();
-		orderCollection.removeFirst();
+		leadTime = (time() - orderCollection.getFirst().getSecond()) / 24; // 记录从需求产生到被满足花费的时间
+		statisticsLeadTime.update(); // 统计量更新
+		histogramleadTime.update(); // 统计量更新
+		orderCollection.removeFirst(); // 需求集合中第一项已经被满足，移去它
 	}
+	// 送达量不足完成订单集合中的下一次订单，下一次订单减去amount的量
 	if (!orderCollection.isEmpty() && amount != 0)
 	{
 		orderCollection.set(0, new Pair<Double, Double>(
@@ -3011,6 +3081,7 @@ if (this == msg.getFirst())
 				<Port>
 					<Id>1623324860833</Id>
 					<Name><![CDATA[order]]></Name>
+					<Description><![CDATA[向批发商下单，由批发商送货。告诉批发商地点以及需求数量]]></Description>
 					<X>220</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -3023,6 +3094,7 @@ if (this == msg.getFirst())
 				<Port>
 					<Id>1623324860841</Id>
 					<Name><![CDATA[take]]></Name>
+					<Description><![CDATA[自主取货中，首先通过该接口询问批发商可取的量，并传回该接口。之后，派卡车去取可取的量]]></Description>
 					<X>270</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
@@ -3042,6 +3114,7 @@ if (this == msg.getFirst())
 				<Event>
 					<Id>1623326689260</Id>
 					<Name><![CDATA[generateDemand]]></Name>
+					<Description><![CDATA[每天随机产生需求，将其加入需求集合，并安排取货（请求送货）]]></Description>
 					<X>20</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3068,16 +3141,16 @@ if (this == msg.getFirst())
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[double orderNum = normal(devDemand, avgDemand);
-numOfOrderToWholesaler ++;
-orderCollection.addLast(new Pair<Double, Double>(orderNum, time()));
-if (takeMode == 1)
+					<Action><![CDATA[double orderNum = normal(devDemand, avgDemand); // 需求量服从正态分布，随机产生
+numOfOrderToWholesaler ++; // 向批发商发起的订单数量+1
+orderCollection.addLast(new Pair<Double, Double>(orderNum, time())); // 在需求集合末尾加入该次订单
+if (takeMode == 1) // 批发商送货
 {
-	order.send(new Pair(this, orderNum));
+	order.send(new Pair(this, orderNum)); // 向批发商下单，由批发商送货
 }
-if (takeMode == 0)
+if (takeMode == 0) // 零售商取货
 {
-	take.send(new Pair(this, orderNum));
+	take.send(new Pair(this, orderNum)); // 向批发商发送要去取货的确认消息
 }]]></Action>
 				</Event>
 			</Events>
@@ -3085,6 +3158,7 @@ if (takeMode == 0)
     			<Statistics>
 					<Id>1623325306317</Id>
 					<Name><![CDATA[statisticsLeadTime]]></Name>
+					<Description><![CDATA[提起期的统计量]]></Description>
 					<X>20</X><Y>250</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3107,6 +3181,7 @@ if (takeMode == 0)
     			<HistogramData>
 					<Id>1623369868209</Id>
 					<Name><![CDATA[histogramleadTime]]></Name>
+					<Description><![CDATA[提前期的直方图]]></Description>
 					<X>120</X><Y>250</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3140,6 +3215,7 @@ if (takeMode == 0)
 				<AgentLink>
 					<Id>1623032712429</Id>
 					<Name><![CDATA[connections]]></Name>
+					<Description><![CDATA[若零售商自主取货，零售商的卡车返回后发送信息，提示取回货的数量]]></Description>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3178,6 +3254,7 @@ if (takeMode == 0)
 				<EmbeddedObject>
 					<Id>1623326124957</Id>
 					<Name><![CDATA[truck]]></Name>
+					<Description><![CDATA[零售商的卡车]]></Description>
 					<X>-30</X><Y>40</Y>
 					<Label><X>-20</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3409,6 +3486,7 @@ if (takeMode == 0)
 		<ActiveObjectClass>
 			<Id>1623032747954</Id>
 			<Name><![CDATA[Truck]]></Name>
+			<Description><![CDATA[根据卡车的起点设置位置]]></Description>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<StartupCode><![CDATA[setLocation(origin);]]></StartupCode>
 			<Generic>false</Generic>
@@ -3507,6 +3585,7 @@ if (takeMode == 0)
 				<Variable Class="PlainVariable">
 					<Id>1623033365429</Id>
 					<Name><![CDATA[destination]]></Name>
+					<Description><![CDATA[卡车目的地]]></Description>
 					<X>10</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3519,6 +3598,7 @@ if (takeMode == 0)
 				<Variable Class="PlainVariable">
 					<Id>1623295441378</Id>
 					<Name><![CDATA[numberToDeliver]]></Name>
+					<Description><![CDATA[卡车运送的货物数量]]></Description>
 					<X>10</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3531,6 +3611,7 @@ if (takeMode == 0)
 				<Variable Class="Parameter">
 					<Id>1623033013578</Id>
 					<Name><![CDATA[capacity]]></Name>
+					<Description><![CDATA[卡车容量]]></Description>
 					<X>10</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3552,6 +3633,7 @@ if (takeMode == 0)
 				<Variable Class="Parameter">
 					<Id>1623033254924</Id>
 					<Name><![CDATA[chainLevel]]></Name>
+					<Description><![CDATA[卡车位于供应链的层次]]></Description>
 					<X>10</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3573,6 +3655,7 @@ if (takeMode == 0)
 				<Variable Class="Parameter">
 					<Id>1623043022988</Id>
 					<Name><![CDATA[origin]]></Name>
+					<Description><![CDATA[卡车起点]]></Description>
 					<X>10</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3594,6 +3677,7 @@ if (takeMode == 0)
 				<Variable Class="CollectionVariable">
 					<Id>1623077118156</Id>
 					<Name><![CDATA[orderCollection]]></Name>
+					<Description><![CDATA[订单集合。卡车依次送货]]></Description>
 					<X>10</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3611,6 +3695,7 @@ if (takeMode == 0)
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1623052185974</Id>
 					<Name><![CDATA[moveToDestination]]></Name>
+					<Description><![CDATA[前往订单终点]]></Description>
 					<X>290</X><Y>110</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3624,6 +3709,7 @@ if (takeMode == 0)
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1623052233781</Id>
 					<Name><![CDATA[unLoading]]></Name>
+					<Description><![CDATA[如果卡车是工厂与批发商的，卡车到达目的地后就向工厂或批发商发送消息，再由它们向批发商或零售商发送消息，告诉它们卡车到了以及运达的量]]></Description>
 					<X>290</X><Y>180</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3638,6 +3724,7 @@ if (takeMode == 0)
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1623052254980</Id>
 					<Name><![CDATA[moveToOrigin]]></Name>
+					<Description><![CDATA[如果卡车是零售商的，则在取货完成返回零售商后告诉零售商到货的量]]></Description>
 					<X>290</X><Y>240</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3653,6 +3740,7 @@ if (takeMode == 0)
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1623052328730</Id>
 					<Name><![CDATA[wait]]></Name>
+					<Description><![CDATA[如果订单集合不空的话，继续送货]]></Description>
 					<X>290</X><Y>300</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3667,6 +3755,7 @@ if (takeMode == 0)
 				<StatechartElement Class="State" ParentState="ROOT_NODE">
 					<Id>1623078009219</Id>
 					<Name><![CDATA[transitionState]]></Name>
+					<Description><![CDATA[该过渡状态没有实际意义，仅仅是让状态图能够在订单集合不满的情况下一直循环]]></Description>
 					<X>420</X><Y>210</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3724,6 +3813,7 @@ if (takeMode == 0)
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1623052273089</Id>
 					<Name><![CDATA[transition1]]></Name>
+					<Description><![CDATA[卸货。卸货时间根据数量决定]]></Description>
 					<X>340</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3784,6 +3874,7 @@ if (takeMode == 0)
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1623052364508</Id>
 					<Name><![CDATA[transition3]]></Name>
+					<Description><![CDATA[如果集合不空，记录下下一轮的目的地与运送量，去除集合首元素]]></Description>
 					<X>460</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3817,6 +3908,7 @@ orderCollection.removeFirst();]]></Action>
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1623078036493</Id>
 					<Name><![CDATA[transition4]]></Name>
+					<Description><![CDATA[收到“Go”指令后，进入过渡状态]]></Description>
 					<X>380</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3845,24 +3937,13 @@ orderCollection.removeFirst();]]></Action>
 					</Properties>	
 				</StatechartElement>
 			</StatechartElements>
-			<DynamicEvents>
-				<DynamicEventClass>
-					<Id>1623052065178</Id>
-					<Name><![CDATA[Unloading]]></Name>
-					<X>10</X><Y>210</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Action><![CDATA[deliver(destination, numberToDeliver);]]></Action>
-				</DynamicEventClass>
-			</DynamicEvents>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
 					<ReturnType><![CDATA[double]]></ReturnType>
 					<Id>1623076129144</Id>
 					<Name><![CDATA[deliver]]></Name>
+					<Description><![CDATA[卡车收到送货命令后，决定如何送货。每次送货的信息添加在订单集合中]]></Description>
 					<X>10</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -3876,7 +3957,8 @@ orderCollection.removeFirst();]]></Action>
 						<Name><![CDATA[number]]></Name>
 						<Type><![CDATA[double]]></Type>
 					</Parameter>
-					<Body><![CDATA[while (number > capacity)
+					<Body><![CDATA[// 货物量大于卡车容量，订单拆解依次添加在集合中
+while (number > capacity)
 {
 	orderCollection.addLast(
 		new Pair<Agent, Double>(dest, capacity));
