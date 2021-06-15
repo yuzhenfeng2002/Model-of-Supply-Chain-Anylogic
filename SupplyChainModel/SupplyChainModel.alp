@@ -16,9 +16,8 @@
 		<ActiveObjectClass>
 			<Id>1623032419016</Id>
 			<Name><![CDATA[Main]]></Name>
-			<Description><![CDATA[初始化工厂]]></Description>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<StartupCode><![CDATA[// 初始化工厂。用工厂的经纬度（参数）创建GIS点，将其设置成工厂的位置
+			<StartupCode><![CDATA[// initialize factory
 GISPoint factoryGIS = 
 	new GISPoint(map, LatitudeOfFactory, LongitudeOfFactory);
 factory.setLocation(factoryGIS);]]></StartupCode>
@@ -115,11 +114,26 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 			<CurrentLevel>1623032419015</CurrentLevel>
 			<ConnectionsId>1623032419011</ConnectionsId>
 			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1623432629156</Id>
+					<Name><![CDATA[selectedViewArea]]></Name>
+					<X>-250</X><Y>480</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[ViewArea]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[viewAnimation]]></Code>
+						</InitialValue>
+					</Properties>
+				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623035393452</Id>
 					<Name><![CDATA[LongitudeOfFactory]]></Name>
 					<Description><![CDATA[工厂经度]]></Description>
-					<X>-190</X><Y>260</Y>
+					<X>-250</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -141,7 +155,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623035415276</Id>
 					<Name><![CDATA[LatitudeOfFactory]]></Name>
 					<Description><![CDATA[工厂纬度]]></Description>
-					<X>-190</X><Y>290</Y>
+					<X>-250</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -161,9 +175,9 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623291973942</Id>
-					<Name><![CDATA[capacityOfWarehouse]]></Name>
+					<Name><![CDATA[capacityOfWholesaler]]></Name>
 					<Description><![CDATA[批发商仓库容量]]></Description>
-					<X>-190</X><Y>320</Y>
+					<X>-250</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -186,9 +200,9 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623291973948</Id>
-					<Name><![CDATA[SSOfWarehouse]]></Name>
+					<Name><![CDATA[SSOfWholesaler]]></Name>
 					<Description><![CDATA[批发商安全库存（定量订货）]]></Description>
-					<X>-190</X><Y>410</Y>
+					<X>-250</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -211,9 +225,9 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623291973952</Id>
-					<Name><![CDATA[orderModeOfWarehouse]]></Name>
-					<Description><![CDATA[批发商订货模式]]></Description>
-					<X>-190</X><Y>350</Y>
+					<Name><![CDATA[orderModeOfWholesaler]]></Name>
+					<Description><![CDATA[批发商订货模式：定期；定量（默认）]]></Description>
+					<X>-250</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -233,9 +247,9 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623291973956</Id>
-					<Name><![CDATA[orderCycleTimeOfWarehouse]]></Name>
+					<Name><![CDATA[orderCycleTimeOfWholesaler]]></Name>
 					<Description><![CDATA[批发商订货周期（定期订货）]]></Description>
-					<X>-190</X><Y>380</Y>
+					<X>-250</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -257,7 +271,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623327985467</Id>
 					<Name><![CDATA[capacityOfRetailer]]></Name>
 					<Description><![CDATA[零售商仓库容量]]></Description>
-					<X>-190</X><Y>440</Y>
+					<X>-250</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -281,8 +295,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623327985474</Id>
 					<Name><![CDATA[takeModeOfRetailer]]></Name>
-					<Description><![CDATA[零售商取货模式]]></Description>
-					<X>-190</X><Y>470</Y>
+					<Description><![CDATA[零售商取货模式：零售商取货（拉）；分销商送货（推，默认）]]></Description>
+					<X>-250</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -304,7 +318,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332416510</Id>
 					<Name><![CDATA[avgDemand]]></Name>
 					<Description><![CDATA[零售商需求均值]]></Description>
-					<X>-190</X><Y>500</Y>
+					<X>-250</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -326,7 +340,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332426821</Id>
 					<Name><![CDATA[devDemand]]></Name>
 					<Description><![CDATA[零售商需求标准差]]></Description>
-					<X>-190</X><Y>530</Y>
+					<X>-250</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -348,7 +362,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332435006</Id>
 					<Name><![CDATA[truckCapacityOfFactory]]></Name>
 					<Description><![CDATA[工厂卡车容量]]></Description>
-					<X>-190</X><Y>560</Y>
+					<X>-250</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -370,7 +384,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332458295</Id>
 					<Name><![CDATA[truckCapacityOfWholesaler]]></Name>
 					<Description><![CDATA[仓库卡车容量]]></Description>
-					<X>-190</X><Y>590</Y>
+					<X>-250</X><Y>420</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -392,7 +406,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332463771</Id>
 					<Name><![CDATA[truckCapacityOfRetailer]]></Name>
 					<Description><![CDATA[零售商卡车容量]]></Description>
-					<X>-190</X><Y>620</Y>
+					<X>-250</X><Y>450</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -415,7 +429,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Connector>
 					<Id>1623249946077</Id>
 					<Name><![CDATA[connector]]></Name>
-					<X>-90</X><Y>-130</Y>
+					<X>280</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -441,14 +455,14 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						<ItemName><![CDATA[deliver]]></ItemName>
 					</TargetConnectableItemReference>
 					<Points>
-						<Point><X>100</X><Y>670</Y></Point>
-						<Point><X>100</X><Y>630</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>-170</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623290502656</Id>
 					<Name><![CDATA[connector1]]></Name>
-					<X>70</X><Y>540</Y>
+					<X>430</X><Y>1060</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -475,13 +489,14 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-60</X><Y>-40</Y></Point>
+						<Point><X>0</X><Y>-170</Y></Point>
+						<Point><X>-150</X><Y>-170</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623325714590</Id>
 					<Name><![CDATA[connector2]]></Name>
-					<X>120</X><Y>580</Y>
+					<X>530</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -508,13 +523,14 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>0</X><Y>-40</Y></Point>
+						<Point><X>0</X><Y>-160</Y></Point>
+						<Point><X>50</X><Y>-160</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623325797579</Id>
 					<Name><![CDATA[connector3]]></Name>
-					<X>180</X><Y>580</Y>
+					<X>630</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -541,13 +557,14 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-60</X><Y>-40</Y></Point>
+						<Point><X>0</X><Y>-160</Y></Point>
+						<Point><X>-50</X><Y>-160</Y></Point>
 					</Points>
 				</Connector>
 				<Connector>
 					<Id>1623380453528</Id>
 					<Name><![CDATA[connector4]]></Name>
-					<X>230</X><Y>580</Y>
+					<X>730</X><Y>1220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -574,15 +591,139 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					</TargetConnectableItemReference>
 					<Points>
 						<Point><X>0</X><Y>0</Y></Point>
-						<Point><X>-50</X><Y>-40</Y></Point>
+						<Point><X>0</X><Y>-160</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623644569431</Id>
+					<Name><![CDATA[connector5]]></Name>
+					<X>180</X><Y>1060</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[wholesaler]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Wholesaler]]></ClassName>
+						<ItemName><![CDATA[analyse]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[analysisCharts]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[AnalysisCharts]]></ClassName>
+						<ItemName><![CDATA[receive]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>160</Y></Point>
+					</Points>
+				</Connector>
+				<Connector>
+					<Id>1623644574501</Id>
+					<Name><![CDATA[connector6]]></Name>
+					<X>430</X><Y>1220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<SourceEmbeddedObjectReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[retailer]]></ItemName>
+					</SourceEmbeddedObjectReference>
+					<SourceConnectableItemReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Retailer]]></ClassName>
+						<ItemName><![CDATA[analyse]]></ItemName>
+					</SourceConnectableItemReference>
+					<TargetEmbeddedObjectReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+						<ItemName><![CDATA[analysisCharts]]></ItemName>
+					</TargetEmbeddedObjectReference>
+					<TargetConnectableItemReference>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[AnalysisCharts]]></ClassName>
+						<ItemName><![CDATA[receive]]></ItemName>
+					</TargetConnectableItemReference>
+					<Points>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>-250</X><Y>0</Y></Point>
 					</Points>
 				</Connector>
 			</Connectors>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1623432629154</Id>
+					<Name><![CDATA[navigate]]></Name>
+					<X>-250</X><Y>510</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[viewArea]]></Name>
+						<Type><![CDATA[ViewArea]]></Type>
+					</Parameter>
+					<Body><![CDATA[selectedViewArea = viewArea;
+viewArea.navigateTo();
+groupMainMenu.setPos(viewArea.getX(), viewArea.getY());]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1623597550988</Id>
+					<Name><![CDATA[getOrderModeOfWholesaler]]></Name>
+					<X>-250</X><Y>570</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[orderModeOfWarehouse]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if(orderModeOfWarehouse==1)
+	return "定量订货模式";
+else
+	return "定期订货";]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1623597882655</Id>
+					<Name><![CDATA[getTakeModeOfRetailer]]></Name>
+					<X>-250</X><Y>540</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[takeModeOfRetailer]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if(takeModeOfRetailer==0)
+	return "	；零售商取货";
+else
+	return "	；分销商送货";]]></Body>
+				</Function>
+			</Functions>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1623032419011</Id>
 					<Name><![CDATA[connections]]></Name>
-					<X>50</X><Y>-50</Y>
+					<X>-120</X><Y>-80</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -604,8 +745,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623034843633</Id>
 					<Name><![CDATA[factory]]></Name>
-					<Description><![CDATA[设置工厂参数，包括经纬度和容量]]></Description>
-					<X>10</X><Y>500</Y>
+					<X>280</X><Y>890</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -685,9 +825,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623080052552</Id>
 					<Name><![CDATA[wholesaler]]></Name>
-					<Description><![CDATA[从数据库中导入批发商的信息。为批发商设置参数，包括经纬度、名字、仓库容量、安全库存（定量订货）、订货模式、订货周期时间（定期订货）、上游供应商（工厂，为模型可扩展性设计）、卡车容量]]></Description>
-					<X>10</X><Y>540</Y>
-					<Label><X>-10</X><Y>-25</Y></Label>
+					<X>180</X><Y>1060</Y>
+					<Label><X>-120</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -716,25 +855,25 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						<Parameter>
 							<Name><![CDATA[capacity]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[capacityOfWarehouse]]></Code>
+								<Code><![CDATA[capacityOfWholesaler]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[SS]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[SSOfWarehouse]]></Code>
+								<Code><![CDATA[SSOfWholesaler]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[orderMode]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[orderModeOfWarehouse]]></Code>
+								<Code><![CDATA[orderModeOfWholesaler]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
 							<Name><![CDATA[orderCycleTime]]></Name>
 							<Value Class="CodeValue">
-								<Code><![CDATA[orderCycleTimeOfWarehouse]]></Code>
+								<Code><![CDATA[orderCycleTimeOfWholesaler]]></Code>
 							</Value>
 						</Parameter>
 						<Parameter>
@@ -853,8 +992,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623248336133</Id>
 					<Name><![CDATA[retailer]]></Name>
-					<Description><![CDATA[从数据库中导入零售商的信息。为零售商设置参数，包括经纬度、名字、上游供应商、仓库容量、取货模式、卡车容量、需求的均值与标准差]]></Description>
-					<X>120</X><Y>580</Y>
+					<X>430</X><Y>1220</Y>
 					<Label><X>-10</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1027,6 +1165,79 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						</Item>	
 					</ParameterToDatabaseColumnMapping>
 				</EmbeddedObject>
+				<EmbeddedObject>
+					<Id>1623644557122</Id>
+					<Name><![CDATA[analysisCharts]]></Name>
+					<X>180</X><Y>1220</Y>
+					<Label><X>-25</X><Y>-35</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[AnalysisCharts]]></ClassName>
+					</ActiveObjectClass>
+					<GenericParameterSubstitute>
+						<GenericParameterSubstituteReference>
+							<PackageName><![CDATA[supplychainmodel]]></PackageName>
+							<ClassName><![CDATA[AnalysisCharts]]></ClassName>
+							<ItemName><![CDATA[1623644435161]]></ItemName>
+						</GenericParameterSubstituteReference>
+					</GenericParameterSubstitute>
+					<Parameters>
+						<Parameter>
+							<Name><![CDATA[takeModeOfRetailer]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[takeModeOfRetailer]]></Code>
+							</Value>
+						</Parameter>
+						<Parameter>
+							<Name><![CDATA[orderModeOfWholesaler]]></Name>
+							<Value Class="CodeValue">
+								<Code><![CDATA[orderModeOfWholesaler]]></Code>
+							</Value>
+						</Parameter>
+					</Parameters>
+					<ReplicationFlag>false</ReplicationFlag>
+					<Replication Class="CodeValue">
+						<Code><![CDATA[100]]></Code>
+					</Replication>
+					<CollectionType>ARRAY_LIST_BASED</CollectionType>
+					<InEnvironment>true</InEnvironment>	
+					<InitialLocationType>AT_ANIMATION_POSITION</InitialLocationType>
+					<XCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</XCode>
+					<YCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</YCode>
+					<ZCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ZCode>
+					<ColumnCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</ColumnCode>
+					<RowCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</RowCode>
+					<LatitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LatitudeCode>
+					<LongitudeCode Class="CodeValue">
+						<Code><![CDATA[0]]></Code>
+					</LongitudeCode>
+					<LocationNameCode Class="CodeValue">
+						<Code><![CDATA[""]]></Code>
+					</LocationNameCode>
+					<InitializationType>SPECIFIED_NUMBER</InitializationType>
+					<InitializationDatabaseTableQuery>
+						<TableReference>
+						</TableReference>
+					</InitializationDatabaseTableQuery>
+					<InitializationDatabaseType>ONE_AGENT_PER_DATABASE_RECORD</InitializationDatabaseType>
+					<QuantityColumn>
+					</QuantityColumn>
+				</EmbeddedObject>
 			</EmbeddedObjects>
 
 			<Presentation>
@@ -1046,15 +1257,15 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<GISMap>
 					<Id>1623034646492</Id>
 					<Name><![CDATA[map]]></Name>
-					<X>0</X><Y>0</Y>
+					<X>0</X><Y>50</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>750</Width>
-					<Height>450</Height>
+					<Width>1000</Width>
+					<Height>550</Height>
 					<GISShapes>
 					</GISShapes>
 					<Latitude>31.271452295388194</Latitude>
@@ -1098,8 +1309,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
 					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>31.46836010205288</Latitude>
-					<Longitude>119.22923783991844</Longitude>
+					<Latitude>35.33227806834256</Latitude>
+					<Longitude>123.09484884248656</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1623080059139</Id>
@@ -1117,8 +1328,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
 					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>31.46836010205288</Latitude>
-					<Longitude>119.22923783991844</Longitude>
+					<Latitude>34.677429416243996</Latitude>
+					<Longitude>122.49743623299874</Longitude>
 				</EmbeddedObjectPresentation>
 				<EmbeddedObjectPresentation>
 					<Id>1623248339227</Id>
@@ -1136,25 +1347,515 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<ScaleType>AUTOMATICALLY_CALCULATED</ScaleType>
 					<GISScaleForRealEmbeddedObjectPresentationSize>1000</GISScaleForRealEmbeddedObjectPresentationSize>
 					<GISScaleForFixedEmbeddedObjectPresentationSize>1000000000</GISScaleForFixedEmbeddedObjectPresentationSize>
-					<Latitude>31.46836010205288</Latitude>
-					<Longitude>119.22923783991844</Longitude>
+					<Latitude>34.829013226575455</Latitude>
+					<Longitude>123.35841322902527</Longitude>
 				</EmbeddedObjectPresentation>
+				<Group>
+					<Id>1623428905518</Id>
+					<Name><![CDATA[groupMainMenu]]></Name>
+					<X>130</X><Y>190</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+
+				</Group>
+				<Group>
+					<Id>1623428905526</Id>
+					<Name><![CDATA[group]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+
+				</Group>
+				<Text>
+					<Id>1623428905528</Id>
+					<Name><![CDATA[text]]></Name>
+					<X>270</X><Y>-70</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Product Delivery]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>28</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Group>
+					<Id>1623598115746</Id>
+					<Name><![CDATA[group1]]></Name>
+					<X>500</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1623428905520</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-500</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5185306</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623434397199</Id>
+					<Name><![CDATA[text9]]></Name>
+					<X>480</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Click any object to inspect]]></Text>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>22</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1623589431651</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>30</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>170</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623589447450</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>40</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[portViewArea.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Ports&Conns]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1623428905522</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>-100</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623428905524</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>-250</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>150</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623428905530</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>-240</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[viewAnimation.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Animation]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623428905532</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>-90</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[analysisCharts.viewArea.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Statistics]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623592872406</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>-485</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[SupplyChainModel]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+				<Group>
+					<Id>1623598191255</Id>
+					<Name><![CDATA[group3]]></Name>
+					<X>500</X><Y>750</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1623598191257</Id>
+					<Name><![CDATA[rectangle8]]></Name>
+					<X>-500</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5185306</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623598191261</Id>
+					<Name><![CDATA[rectangle9]]></Name>
+					<X>30</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>170</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623598191263</Id>
+					<Name><![CDATA[text13]]></Name>
+					<X>40</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[portViewArea.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Ports&Conns]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1623598191265</Id>
+					<Name><![CDATA[rectangle10]]></Name>
+					<X>-100</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623598191267</Id>
+					<Name><![CDATA[rectangle11]]></Name>
+					<X>-250</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>150</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623598191269</Id>
+					<Name><![CDATA[text14]]></Name>
+					<X>-240</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[viewAnimation.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Animation]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623598191271</Id>
+					<Name><![CDATA[text15]]></Name>
+					<X>-90</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[analysisCharts.viewArea.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Statistics]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623598191273</Id>
+					<Name><![CDATA[text16]]></Name>
+					<X>-485</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[SupplyChainModel]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+				<Text>
+					<Id>1623598374688</Id>
+					<Name><![CDATA[text12]]></Name>
+					<X>975</X><Y>730</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Click any object to inspect]]></Text>
+					<TextCode><![CDATA[getOrderModeOfWholesaler(orderModeOfWholesaler) + getTakeModeOfRetailer(takeModeOfRetailer)]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>20</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
 			</Presentation>
 			<Areas>
 				<Area>
-					<Id>1623393529354</Id>
-					<Name><![CDATA[viewArea]]></Name>
+					<Id>1623428931235</Id>
+					<Name><![CDATA[viewAnimation]]></Name>
 					<X>0</X><Y>0</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Title><![CDATA[]]></Title>
-					<Width>750</Width>
-					<Height>450</Height>
+					<Width>1000</Width>
+					<Height>600</Height>
+				</Area>
+				<Area>
+					<Id>1623589662707</Id>
+					<Name><![CDATA[portViewArea]]></Name>
+					<X>0</X><Y>720</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>600</Height>
 				</Area>
 			</Areas>
 
@@ -1164,13 +1865,6 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 			<Id>1623032524878</Id>
 			<Name><![CDATA[Factory]]></Name>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
-			<StartupCode><![CDATA[// initialize wholesalers
-/*for (Wholesaler w : wholesaler)
-{
-	GISPoint wholesalerGIS = 
-	new GISPoint(main.map, w.latitude, w.longitude);
-	w.setLocation(wholesalerGIS);
-}*/]]></StartupCode>
 			<Generic>false</Generic>
 			<GenericParameter>
 				<Id>1623032524876</Id>
@@ -1267,8 +1961,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623034899074</Id>
 					<Name><![CDATA[longitude]]></Name>
-					<Description><![CDATA[经度]]></Description>
-					<X>10</X><Y>100</Y>
+					<Description><![CDATA[工厂的经度]]></Description>
+					<X>-120</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1290,7 +1984,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623034960136</Id>
 					<Name><![CDATA[latitude]]></Name>
 					<Description><![CDATA[工厂的纬度]]></Description>
-					<X>10</X><Y>130</Y>
+					<X>-120</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1312,7 +2006,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332624184</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
 					<Description><![CDATA[工厂卡车的容量]]></Description>
-					<X>10</X><Y>160</Y>
+					<X>-120</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1336,7 +2030,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623044853642</Id>
 					<Name><![CDATA[deliver]]></Name>
 					<Description><![CDATA[端口收到的消息包括要运送的目的地和数量，将这两个量传给卡车]]></Description>
-					<X>200</X><Y>100</Y>
+					<X>320</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1344,20 +2038,22 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Agent, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Agent, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[truck.deliver(msg.getFirst(), msg.getSecond());]]></OnReceiveAction>
+					<OnReceiveAction><![CDATA[// 收到来自分销商的订单之后就让自己的卡车运送
+truck.deliver(msg.getFirst(), msg.getSecond());]]></OnReceiveAction>
 				</Port>
 			</Ports>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1623032524873</Id>
 					<Name><![CDATA[connections]]></Name>
-					<Description><![CDATA[卡车到达目的地，传回消息。告知到达的智能体以及送货的数量]]></Description>
+					<Description><![CDATA[卡车到达目的地，传回消息。告知到达的智能体以及送货的数量	]]></Description>
 					<X>50</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<OnReceive><![CDATA[deliver.send(msg);]]></OnReceive>
+					<OnReceive><![CDATA[// 收到信息后，就将信息进行转发，转发给分销商的port（receive）
+deliver.send(msg);]]></OnReceive>
 					<HandleReceiveInConnections>false</HandleReceiveInConnections>
 					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
 					<AgentLinkBidirectional>true</AgentLinkBidirectional>
@@ -1390,8 +2086,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623033718691</Id>
 					<Name><![CDATA[truck]]></Name>
-					<Description><![CDATA[工厂的卡车。速度为60km/h。为其设置容量和起点（即工厂）。它位于供应链的第一层]]></Description>
-					<X>10</X><Y>70</Y>
+					<X>-50</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1528,7 +2223,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObjectPresentation>
 					<Id>1623033725793</Id>
 					<Name><![CDATA[truck_presentation]]></Name>
-					<X>10</X><Y>60</Y>
+					<X>0</X><Y>0</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1652,7 +2347,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623252849210</Id>
 					<Name><![CDATA[currentInventory]]></Name>
 					<Description><![CDATA[目前的库存]]></Description>
-					<X>10</X><Y>420</Y>
+					<X>-230</X><Y>490</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1668,7 +2363,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623253080066</Id>
 					<Name><![CDATA[numOfUnfulfilledOrder]]></Name>
 					<Description><![CDATA[零售商因为批发商库存不足而没有能够被及时满足的订单]]></Description>
-					<X>10</X><Y>450</Y>
+					<X>-230</X><Y>520</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1681,7 +2376,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623292692820</Id>
 					<Name><![CDATA[leadTime]]></Name>
 					<Description><![CDATA[提前期（用于统计）]]></Description>
-					<X>10</X><Y>270</Y>
+					<X>-230</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1694,7 +2389,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623292841589</Id>
 					<Name><![CDATA[sendTime]]></Name>
 					<Description><![CDATA[发出订单的时间（用于统计提前期）]]></Description>
-					<X>10</X><Y>300</Y>
+					<X>-230</X><Y>370</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1707,7 +2402,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623292861732</Id>
 					<Name><![CDATA[receiveTime]]></Name>
 					<Description><![CDATA[接受订单的时间（用于统计提前期）]]></Description>
-					<X>10</X><Y>330</Y>
+					<X>-230</X><Y>400</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1720,7 +2415,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623293805089</Id>
 					<Name><![CDATA[allDemand]]></Name>
 					<Description><![CDATA[下游需求总和]]></Description>
-					<X>10</X><Y>390</Y>
+					<X>-230</X><Y>460</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1736,7 +2431,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623297458589</Id>
 					<Name><![CDATA[numOfAbandonedInventory]]></Name>
 					<Description><![CDATA[因为下单过多以及仓库容量限制而被丢弃的库存]]></Description>
-					<X>10</X><Y>510</Y>
+					<X>-230</X><Y>580</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1752,7 +2447,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623307025018</Id>
 					<Name><![CDATA[numOfOrderOfRetailer]]></Name>
 					<Description><![CDATA[零售商下单量]]></Description>
-					<X>10</X><Y>480</Y>
+					<X>-230</X><Y>550</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1765,7 +2460,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623313936316</Id>
 					<Name><![CDATA[numOfOrderToFactory]]></Name>
 					<Description><![CDATA[向工厂的下单量]]></Description>
-					<X>180</X><Y>570</Y>
+					<X>-230</X><Y>430</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1778,7 +2473,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623378421088</Id>
 					<Name><![CDATA[isLastOrderReceived]]></Name>
 					<Description><![CDATA[最后发送给工厂的订单是否送达（防止因为需求不足重复下单）]]></Description>
-					<X>100</X><Y>130</Y>
+					<X>-230</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1794,7 +2489,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623043392132</Id>
 					<Name><![CDATA[longitude]]></Name>
 					<Description><![CDATA[批发商经度]]></Description>
-					<X>10</X><Y>90</Y>
+					<X>-230</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -1816,7 +2511,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623043392138</Id>
 					<Name><![CDATA[latitude]]></Name>
 					<Description><![CDATA[批发商纬度]]></Description>
-					<X>10</X><Y>120</Y>
+					<X>-230</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1838,7 +2533,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623248290453</Id>
 					<Name><![CDATA[name]]></Name>
 					<Description><![CDATA[批发商名字]]></Description>
-					<X>10</X><Y>60</Y>
+					<X>-230</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1860,7 +2555,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623252575411</Id>
 					<Name><![CDATA[capacity]]></Name>
 					<Description><![CDATA[批发商仓库容量]]></Description>
-					<X>10</X><Y>150</Y>
+					<X>-230</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1884,8 +2579,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623290330114</Id>
 					<Name><![CDATA[SS]]></Name>
-					<Description><![CDATA[批发商安全库存]]></Description>
-					<X>10</X><Y>240</Y>
+					<Description><![CDATA[批发商安全库存（定量订货模式）]]></Description>
+					<X>-230</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1909,8 +2604,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291748009</Id>
 					<Name><![CDATA[orderMode]]></Name>
-					<Description><![CDATA[批发商订货模式]]></Description>
-					<X>10</X><Y>180</Y>
+					<Description><![CDATA[批发商订货模式：定期（0）；定量（默认，1）]]></Description>
+					<X>-230</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1931,8 +2626,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623291795395</Id>
 					<Name><![CDATA[orderCycleTime]]></Name>
-					<Description><![CDATA[批发商订货周期（定期订货）]]></Description>
-					<X>10</X><Y>210</Y>
+					<Description><![CDATA[批发商订货周期（定期订货模式）]]></Description>
+					<X>-230</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1954,7 +2649,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623292210494</Id>
 					<Name><![CDATA[upstreamVender]]></Name>
 					<Description><![CDATA[批发商上游供应商（即工厂）]]></Description>
-					<X>10</X><Y>30</Y>
+					<X>-230</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1976,7 +2671,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332665766</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
 					<Description><![CDATA[批发商卡车容量]]></Description>
-					<X>10</X><Y>630</Y>
+					<X>-230</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -1998,7 +2693,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623372272218</Id>
 					<Name><![CDATA[orderCollection]]></Name>
 					<Description><![CDATA[订单集合。零售商以及其下单的数量]]></Description>
-					<X>10</X><Y>660</Y>
+					<X>-230</X><Y>610</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2016,7 +2711,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623065854815</Id>
 					<Name><![CDATA[receive]]></Name>
 					<Description><![CDATA[收到货物后，首先查看是否爆仓，再依次满足订单集合中的订单，最后判断是否要再次下单]]></Description>
-					<X>100</X><Y>100</Y>
+					<X>300</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2024,32 +2719,39 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Agent, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Agent, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 确认信息是发给自己的
+					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 如果工厂发送的货物是给自己的话
 {
-	isLastOrderReceived = true; // 收到货物，更新该状态
-	currentInventory += msg.getSecond(); // 库存更新
-	// 如果爆仓
+	// 上一个订单已经收到了，如果想要继续向工厂发送订单的话是可以的
+	isLastOrderReceived = true;
+	currentInventory += msg.getSecond();   // 库存增加
+	
+	// 如果货物到达后仓库容量不够，记录被丢弃的货物数量
+	// 更新统计量avgAbandonedInventory，将库存更正为仓库容量
 	if (currentInventory > capacity)
 	{
-		// 计算丢弃量、更新统计量并丢弃爆仓的库存
 		numOfAbandonedInventory += (currentInventory - capacity);
+		// 将数据发送给“分析”智能体
+		analyse.send(new Pair<String, Double>("numOfAbandonedInventory", 1.0*(currentInventory - capacity)));
 		avgAbandonedInventory.update();
 		currentInventory = capacity;
 	}
-	// 统计量更新
+	// 记录货物收到时间，计算花费时间，更新统计量avgLeadTime
 	receiveTime = time();
 	leadTime = (receiveTime - sendTime) / 24;
 	avgLeadTime.update();
 	
-	// 依次满足订单集合
+	// 到货后就需要处理订单列表中的订单
+	// 如果订单列表非空，并且仓库存量大于订单列表中第一个订单的需求量
 	while (!orderCollection.isEmpty() && currentInventory >= orderCollection.getFirst().getSecond())
 	{
+		// 库存量减少相应数量，并将货物发送给retailer，移出这一订单
 		double sendAmount = orderCollection.getFirst().getSecond();
 		currentInventory -= sendAmount;
-		deliver.send(new Pair<Retailer, Double>(
-			orderCollection.getFirst().getFirst(), sendAmount));
+		truck.deliver(orderCollection.getFirst().getFirst(), sendAmount);
 		orderCollection.removeFirst();
 	}
+	// 如果订单列表非空，并且所剩到货量不为0（但不足以完全满足订单列表中第一个订单的需求量）
+	// 则所剩的到货量先满足订单的一部分需求，并更新这一订单的需求，而且此订单还是排在最前面
 	if (currentInventory != 0)
 	{
 		if (!orderCollection.isEmpty())
@@ -2060,24 +2762,15 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 			currentInventory = 0;
 		}
 	}
-	
-	// 如果货物再次不足，就再次下单，同deliver接口中的处理
-	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
-	{
-		if (orderMode == 1 && isLastOrderReceived == true)
-		{
-			order.send(new Pair(this, capacity));
-			numOfOrderToFactory ++;
-			isLastOrderReceived = false;
-		}
-	}
+	if (orderMode == 1)  //如果是定量订货模型，则检查是否需要订货，如果需要则向工厂发送订单
+		checkInventory();
 }]]></OnReceiveAction>
 				</Port>
 				<Port>
 					<Id>1623290234560</Id>
 					<Name><![CDATA[order]]></Name>
 					<Description><![CDATA[向工厂下单，下单时记录时间，便于统计提前期]]></Description>
-					<X>160</X><Y>100</Y>
+					<X>450</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2085,13 +2778,15 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Agent, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Agent, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnSendAction><![CDATA[sendTime = time();]]></OnSendAction>
+					<OnSendAction><![CDATA[// 记录想工厂发送订单的时间
+// 只有在当前的订单完成后才能进行下一个订单的发生，因此这个变量中的数据只有在用完之后才会被更新，不会有被挤掉的可能性
+sendTime = time();]]></OnSendAction>
 				</Port>
 				<Port>
 					<Id>1623324626708</Id>
 					<Name><![CDATA[deliver]]></Name>
-					<Description><![CDATA[收到需求后，根据仓库库存进行配送。]]></Description>
-					<X>210</X><Y>100</Y>
+					<Description><![CDATA[收到需求后，根据仓库库存进行配送]]></Description>
+					<X>600</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2099,45 +2794,46 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Retailer, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Retailer, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (msg.getFirst().wholesaler == this.name) // 确认是发给自己的消息
+					<OnReceiveAction><![CDATA[// 针对批发商送货模式
+// 库存不够将需求增加到订单列表，到货之后补上；但未满足订单增加，更新统计量
+if (msg.getFirst().wholesaler == this.name) // 如果订单是由自己的下游零售商发出的话
 {
-	numOfOrderOfRetailer ++; // 来自零售商的订单数量+1
-	allDemand += msg.getSecond(); // 更新总需求
-	// 如果需求量超过了仓库库存
-	if (currentInventory - msg.getSecond() < 0)
+	numOfOrderOfRetailer ++;
+	// 将数据发送给“分析”智能体 
+	analyse.send(new Pair("numOfOrderOfRetailer", 1.0));
+	allDemand += msg.getSecond(); 
+	
+	if (currentInventory - msg.getSecond() < 0)  // 库存不够时
 	{
 		double amount = msg.getSecond();
+		// 如果还有库存量，利用自己的库存量尽可能满足订单需求
 		if (currentInventory > 0)
 		{
-			truck.deliver(msg.getFirst(), currentInventory); // 先运送仓库有的量
+			truck.deliver(msg.getFirst(), currentInventory);
 			currentInventory = 0;
 			amount -= currentInventory;
 		}
-		numOfUnfulfilledOrder ++; // 需求未被及时满足
-		unfulfillRatio.update(); // 更新统计量
+		// 未满足订单数增加，并更新统计数据；将还未满足的订单添加到订单列表中
+		numOfUnfulfilledOrder ++;
+		// 将数据发送给“分析”智能体 
+		analyse.send(new Pair("numOfUnfulfilledOrder", 1.0));
 		orderCollection.addLast(new Pair(
-			msg.getFirst(), amount)); // 订单集合中加入未被满足的零售商及货物量
+			msg.getFirst(), amount));
 	}
-	else
+	else // 库存足够时，直接发信息给自己的卡车送货，库存减少相应数量
 	{
-		truck.deliver(msg.getFirst(), msg.getSecond()); // 库存充足，直接让卡车进行配送
+		truck.deliver(msg.getFirst(), msg.getSecond());
 		currentInventory -= msg.getSecond();
 	}
-	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS) // 到达再订货点
-	{
-		if (orderMode == 1 && isLastOrderReceived == true) // 如果是定量订货，且上次下的单已经到达
-		{
-			order.send(new Pair(this, capacity)); // 向工厂下单
-			numOfOrderToFactory ++; // 更新统计量
-			isLastOrderReceived = false; // 更新订单到达状态
-		}
-	}
+	
+	if (orderMode == 1) // 如果是定量订货模型，则检查是否需要订货，如果需要则向工厂发送订单
+		checkInventory();
 }]]></OnReceiveAction>
 				</Port>
 				<Port>
 					<Id>1623371528441</Id>
 					<Name><![CDATA[takenAway]]></Name>
-					<X>270</X><Y>100</Y>
+					<X>750</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2145,32 +2841,46 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Retailer, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Wholesaler, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (msg.getFirst().wholesaler == this.name)
+					<OnReceiveAction><![CDATA[// 针对零售商取货模式，如果库存不够，未满足订单增加
+if (msg.getFirst().wholesaler == this.name) // 如果订单是由自己的下游零售商发出的话
 {
+	// 分销商订单计数增加，总需求量增加
 	numOfOrderOfRetailer ++;
+	// 将数据发送给“分析”智能体 
+	analyse.send(new Pair("numOfOrderOfRetailer", 1.0));
 	allDemand += msg.getSecond();
 	double amount = msg.getSecond();
-	if (amount < currentInventory)
+	
+	if (amount < currentInventory) // 如果库存足够
 	{
+		// 向零售商发信息让他来取订单量相应需求，自身库存减少相应数量
 		self.send(new Pair(this, amount));
 		currentInventory -= amount;
 	}
-	else
+	else // 如果库存不够
 	{
+		// 向零售商发信息让他来取已有的库存量，库存设置为0，未满足订单数增加
 		self.send(new Pair(this, currentInventory));
 		currentInventory = 0;
-		numOfUnfulfilledOrder ++;
+		// 将数据发送给“分析”智能体 
+		analyse.send(new Pair("numOfUnfulfilledOrder", 1.0));		
 	}
-	if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
-	{
-		if (orderMode == 1 && isLastOrderReceived == true)
-		{
-			order.send(new Pair(this, capacity));
-			numOfOrderToFactory ++;
-			isLastOrderReceived = false;
-		}
-	}
+	if (orderMode == 1) // 如果是定量订货模型，则检查是否需要订货，如果需要则向工厂发送订单
+		checkInventory();
 }]]></OnReceiveAction>
+				</Port>
+				<Port>
+					<Id>1623644519731</Id>
+					<Name><![CDATA[analyse]]></Name>
+					<Description><![CDATA[传送数据到AnalysisCharts智能体用于分析数据]]></Description>
+					<X>200</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<IncomingMessageType><![CDATA[Object]]></IncomingMessageType>
+					<OutgoingMessageType><![CDATA[Pair<String, Double>]]></OutgoingMessageType>
+					<CustomPort><![CDATA[false]]></CustomPort>
 				</Port>
 			</Ports>
 			<Events>
@@ -2178,7 +2888,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623293296143</Id>
 					<Name><![CDATA[check]]></Name>
 					<Description><![CDATA[定期订货模式中，每循环周期进行下单]]></Description>
-					<X>10</X><Y>600</Y>
+					<X>-450</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2204,19 +2914,48 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[if (orderMode == 0)
+					<Action><![CDATA[// 定期订货模式中，每循环周期向工厂发信息订货
+if (orderMode == 0)
 {
 	order.send(new Pair(this, avgLeadTime.mean() * avgDemand.mean() + capacity - currentInventory));
 	numOfOrderToFactory ++;
+	analyse.send(new Pair("numOfOrderToFactory", 1.0));
 }]]></Action>
 				</Event>
 			</Events>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>VOID</ReturnModificator>
+					<ReturnType><![CDATA[double]]></ReturnType>
+					<Id>1623574116028</Id>
+					<Name><![CDATA[checkInventory]]></Name>
+					<Description><![CDATA[检查库存]]></Description>
+					<X>-450</X><Y>220</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Body><![CDATA[// 针对定量订货模型
+// 如果库存小于安全库存+提前期*平均需求，且上一个给工厂的订单已经到货
+// 向工厂发送订单，订单量为分销商容量
+if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
+{
+	if (isLastOrderReceived == true)
+	{
+		order.send(new Pair(this, capacity));
+		numOfOrderToFactory ++;
+		analyse.send(new Pair("numOfOrderToFactory", 1.0));
+		isLastOrderReceived = false;
+	}
+}]]></Body>
+				</Function>
+			</Functions>
 			<AnalysisData>
     			<Statistics>
 					<Id>1623292965783</Id>
 					<Name><![CDATA[avgLeadTime]]></Name>
 					<Description><![CDATA[平均提前期]]></Description>
-					<X>10</X><Y>360</Y>
+					<X>-450</X><Y>70</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2239,7 +2978,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623308006031</Id>
 					<Name><![CDATA[unfulfillRatio]]></Name>
 					<Description><![CDATA[未被满足的订单比例（1 - 服务水平）]]></Description>
-					<X>10</X><Y>540</Y>
+					<X>-450</X><Y>130</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2262,7 +3001,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623308117767</Id>
 					<Name><![CDATA[avgAbandonedInventory]]></Name>
 					<Description><![CDATA[平均被丢弃的货物]]></Description>
-					<X>10</X><Y>570</Y>
+					<X>-450</X><Y>160</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2285,7 +3024,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623386392238</Id>
 					<Name><![CDATA[avgDemand]]></Name>
 					<Description><![CDATA[下游平均每天的需求]]></Description>
-					<X>90</X><Y>390</Y>
+					<X>-450</X><Y>100</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2304,13 +3043,36 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Discrete>true</Discrete>
 					<ValueCode><![CDATA[(allDemand/(time()/24))]]></ValueCode>
 				</Statistics>
+    			<Statistics>
+					<Id>1623745651595</Id>
+					<Name><![CDATA[avgInventory]]></Name>
+					<Description><![CDATA[平均库存]]></Description>
+					<X>-450</X><Y>190</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623830400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
+					<ValueCode><![CDATA[currentInventory]]></ValueCode>
+				</Statistics>
 			</AnalysisData>
 			<AgentLinks>
 				<AgentLink>
 					<Id>1623032625121</Id>
 					<Name><![CDATA[connections]]></Name>
 					<Description><![CDATA[卡车送达后，告诉批发商，再由批发商告诉零售商订单送达（由于需要通过接口建模，卡车直接通知零售商不易实现）]]></Description>
-					<X>50</X><Y>-50</Y>
+					<X>30</X><Y>-50</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2348,8 +3110,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<EmbeddedObject>
 					<Id>1623323602045</Id>
 					<Name><![CDATA[truck]]></Name>
-					<Description><![CDATA[批发商的卡车]]></Description>
-					<X>-30</X><Y>30</Y>
+					<X>-50</X><Y>-50</Y>
 					<Label><X>-20</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2490,7 +3251,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<TimePlot>
 					<Id>1623253431588</Id>
 					<Name><![CDATA[inventory]]></Name>
-					<X>180</X><Y>200</Y>
+					<X>10</X><Y>240</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2549,6 +3310,16 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
 					</DatasetExpression>
+					<DatasetExpression>  
+						<Title><![CDATA[Average Inventory]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset1]]></Expression>
+					<Color>-32944</Color>
+					<Expression2><![CDATA[avgInventory.mean()]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
 					<SamplesToKeep>100</SamplesToKeep>
 					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
 					<FillAreaUnderLine>false</FillAreaUnderLine>
@@ -2557,7 +3328,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<TimePlot>
 					<Id>1623308425367</Id>
 					<Name><![CDATA[inventory1]]></Name>
-					<X>520</X><Y>200</Y>
+					<X>560</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2624,7 +3395,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
     			<PieChart>
 					<Id>1623313307468</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>290</X><Y>0</Y>
+					<X>370</X><Y>30</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2689,6 +3460,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 点击时就切换到本智能体的视图
+_origin_VA.navigateTo();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -2699,10 +3472,261 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Latitude>0.0</Latitude>
 					<Longitude>0.0</Longitude>
 				</EmbeddedObjectPresentation>
+				<Rectangle>
+					<Id>1623433409589</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 返回主窗体的视图
+main.navigate(main.viewAnimation);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>60</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Polyline>
+					<Id>1623433440001</Id>
+					<Name><![CDATA[polyline2]]></Name>
+					<X>20</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>20</X><Y>0</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Polyline>
+					<Id>1623433440004</Id>
+					<Name><![CDATA[polyline3]]></Name>
+					<X>30</X><Y>10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>25</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>25</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Rectangle>
+					<Id>1623434323783</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-20</X><Y>-20</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[_origin_VA.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>40</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623434570736</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>60</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 如果不是集合中第一个智能体的话，就切换到集合中上一个智能体的视图
+if(getIndex() > 0) {
+	getPopulation().get(getIndex() - 1)._origin_VA.navigateTo();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623434570740</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>110</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 如果不是集合中最后一个智能体的话，就切换到集合中下一个智能体的视图
+if(getIndex() < getPopulation().size() - 1) {
+	getPopulation().get(getIndex() + 1)._origin_VA.navigateTo();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Polyline>
+					<Id>1623434570742</Id>
+					<Name><![CDATA[polyline4]]></Name>
+					<X>90</X><Y>35</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>-10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>-20</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Polyline>
+					<Id>1623434570744</Id>
+					<Name><![CDATA[polyline5]]></Name>
+					<X>130</X><Y>35</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>-20</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Text>
+					<Id>1623434583081</Id>
+					<Name><![CDATA[wholesaler]]></Name>
+					<X>180</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12156236</Color>
+					<Text><![CDATA[Wholesaler]]></Text>
+					<TextCode><![CDATA[this+"\t\t"+this.name]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
 			</Presentation>
+			<Areas>
+				<Area>
+					<Id>1623572205770</Id>
+					<Name><![CDATA[viewArea]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>600</Height>
+				</Area>
+			</Areas>
 
 		</ActiveObjectClass>
 		<!--   =========   Active Object Class   ========  -->
@@ -2807,7 +3831,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623325306253</Id>
 					<Name><![CDATA[leadTime]]></Name>
 					<Description><![CDATA[零售商的提前期（临时变量，用于计算平均值）]]></Description>
-					<X>20</X><Y>220</Y>
+					<X>-210</X><Y>190</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2820,20 +3844,23 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623325649156</Id>
 					<Name><![CDATA[numOfOrderToWholesaler]]></Name>
 					<Description><![CDATA[零售商向批发商发起的订单数量]]></Description>
-					<X>20</X><Y>280</Y>
+					<X>-210</X><Y>220</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
 					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
-						<Type><![CDATA[double]]></Type>        
+						<Type><![CDATA[int]]></Type>        
+						<InitialValue Class="CodeValue">
+							<Code><![CDATA[0]]></Code>
+						</InitialValue>
 					</Properties>
 				</Variable>
 				<Variable Class="Parameter">
 					<Id>1623248372208</Id>
 					<Name><![CDATA[longitude]]></Name>
 					<Description><![CDATA[零售商经度]]></Description>
-					<X>20</X><Y>160</Y>
+					<X>-330</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -2855,7 +3882,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623248372214</Id>
 					<Name><![CDATA[latitude]]></Name>
 					<Description><![CDATA[零售商纬度]]></Description>
-					<X>20</X><Y>190</Y>
+					<X>-330</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2877,7 +3904,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623248372218</Id>
 					<Name><![CDATA[name]]></Name>
 					<Description><![CDATA[零售商名字]]></Description>
-					<X>20</X><Y>130</Y>
+					<X>-330</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2899,7 +3926,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623248382235</Id>
 					<Name><![CDATA[wholesaler]]></Name>
 					<Description><![CDATA[零售商上游批发商的名字]]></Description>
-					<X>20</X><Y>100</Y>
+					<X>-330</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2921,7 +3948,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623325341370</Id>
 					<Name><![CDATA[capacity]]></Name>
 					<Description><![CDATA[零售商仓库容量]]></Description>
-					<X>20</X><Y>70</Y>
+					<X>-210</X><Y>160</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2942,8 +3969,8 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 				<Variable Class="Parameter">
 					<Id>1623328150747</Id>
 					<Name><![CDATA[takeMode]]></Name>
-					<Description><![CDATA[零售商取货模式]]></Description>
-					<X>20</X><Y>40</Y>
+					<Description><![CDATA[零售商取货模式：零售商取货（拉，默认，0）；分销商送货（推，1）]]></Description>
+					<X>-210</X><Y>130</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2965,7 +3992,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332706989</Id>
 					<Name><![CDATA[truckCapacity]]></Name>
 					<Description><![CDATA[零售商卡车容量]]></Description>
-					<X>20</X><Y>370</Y>
+					<X>-210</X><Y>40</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2987,7 +4014,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332827559</Id>
 					<Name><![CDATA[avgDemand]]></Name>
 					<Description><![CDATA[零售商需求均值]]></Description>
-					<X>20</X><Y>400</Y>
+					<X>-210</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3009,7 +4036,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623332838126</Id>
 					<Name><![CDATA[devDemand]]></Name>
 					<Description><![CDATA[零售商需求标准差]]></Description>
-					<X>20</X><Y>430</Y>
+					<X>-210</X><Y>100</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3031,7 +4058,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623331556575</Id>
 					<Name><![CDATA[orderCollection]]></Name>
 					<Description><![CDATA[零售商的需求集合。第一个值是需求的数量，第二个值是需求发送的时间]]></Description>
-					<X>20</X><Y>340</Y>
+					<X>-210</X><Y>310</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3049,7 +4076,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623324860828</Id>
 					<Name><![CDATA[receive]]></Name>
 					<Description><![CDATA[收到货物后，依次满足订单集合中的需求。统计量更新]]></Description>
-					<X>160</X><Y>90</Y>
+					<X>600</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3057,19 +4084,23 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Retailer, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Retailer, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 确认货物是送给该零售商的
+					<OnReceiveAction><![CDATA[if (this == msg.getFirst()) // 如果接收到的信息是给自己的
 {
-	double amount = msg.getSecond(); // 记录送达了多少数量
-	// 依次满足需求集合里的需求
+	double amount = msg.getSecond();
+	/*到达的货物优先满足订单列表中的需求
+	如果订单非空，并且到货量（或所剩的到货量）大于订单列表中第一个订单的需求
+	则到货量先用于满足订单列表*/
 	while (!orderCollection.isEmpty() && amount >= orderCollection.getFirst().getFirst())
 	{
 		amount -= orderCollection.getFirst().getFirst();
-		leadTime = (time() - orderCollection.getFirst().getSecond()) / 24; // 记录从需求产生到被满足花费的时间
-		statisticsLeadTime.update(); // 统计量更新
-		histogramleadTime.update(); // 统计量更新
-		orderCollection.removeFirst(); // 需求集合中第一项已经被满足，移去它
+		leadTime = (time() - orderCollection.getFirst().getSecond()) / 24;
+		statisticsLeadTime.update();
+		histogramLeadTime.update();
+		analyse.send(new Pair<String, Double>("histogramLeadTime", 1.0*leadTime));
+		orderCollection.removeFirst();
 	}
-	// 送达量不足完成订单集合中的下一次订单，下一次订单减去amount的量
+	/*如果订单列表非空，并且所剩到货量不为0（但不足以完全满足订单列表中第一个订单的需求量）
+	则所剩的到货量先满足订单的一部分需求，并更新这一订单的需求，而且此订单还是排在最前面*/
 	if (!orderCollection.isEmpty() && amount != 0)
 	{
 		orderCollection.set(0, new Pair<Double, Double>(
@@ -3082,7 +4113,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623324860833</Id>
 					<Name><![CDATA[order]]></Name>
 					<Description><![CDATA[向批发商下单，由批发商送货。告诉批发商地点以及需求数量]]></Description>
-					<X>220</X><Y>90</Y>
+					<X>700</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3095,7 +4126,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623324860841</Id>
 					<Name><![CDATA[take]]></Name>
 					<Description><![CDATA[自主取货中，首先通过该接口询问批发商可取的量，并传回该接口。之后，派卡车去取可取的量]]></Description>
-					<X>270</X><Y>90</Y>
+					<X>800</X><Y>-50</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3103,11 +4134,25 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<IncomingMessageType><![CDATA[Pair<Wholesaler, Double>]]></IncomingMessageType>
 					<OutgoingMessageType><![CDATA[Pair<Retailer, Double>]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
-					<OnReceiveAction><![CDATA[if (msg.getFirst().name == wholesaler)
+					<OnReceiveAction><![CDATA[if (msg.getFirst().name == wholesaler) // 如果接收到的信息是分销商发来的
 {
-	if (msg.getSecond() > 0)
+	if (msg.getSecond() > 0) // 如果订单量非0（订单量为0的情况：分销商在没有库存的情况下发送的订单）
+		// 调用卡车智能体的deliver函数，让自己的卡车去取货，告诉卡车目的地和数量
 		truck.deliver(msg.getFirst(), msg.getSecond());
 }]]></OnReceiveAction>
+				</Port>
+				<Port>
+					<Id>1623644537304</Id>
+					<Name><![CDATA[analyse]]></Name>
+					<Description><![CDATA[传送数据到AnalysisCharts智能体用于分析数据]]></Description>
+					<X>500</X><Y>-50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<IncomingMessageType><![CDATA[Object]]></IncomingMessageType>
+					<OutgoingMessageType><![CDATA[Pair<String, Double>]]></OutgoingMessageType>
+					<CustomPort><![CDATA[false]]></CustomPort>
 				</Port>
 			</Ports>
 			<Events>
@@ -3115,7 +4160,7 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 					<Id>1623326689260</Id>
 					<Name><![CDATA[generateDemand]]></Name>
 					<Description><![CDATA[每天随机产生需求，将其加入需求集合，并安排取货（请求送货）]]></Description>
-					<X>20</X><Y>310</Y>
+					<X>-210</X><Y>340</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3142,15 +4187,16 @@ factory.setLocation(factoryGIS);]]></StartupCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
 					<Action><![CDATA[double orderNum = normal(devDemand, avgDemand); // 需求量服从正态分布，随机产生
-numOfOrderToWholesaler ++; // 向批发商发起的订单数量+1
-orderCollection.addLast(new Pair<Double, Double>(orderNum, time())); // 在需求集合末尾加入该次订单
-if (takeMode == 1) // 批发商送货
+numOfOrderToWholesaler ++;
+orderCollection.addLast(new Pair<Double, Double>(orderNum, time()));
+
+if (takeMode == 1) // 分销商送货模式
 {
-	order.send(new Pair(this, orderNum)); // 向批发商下单，由批发商送货
+	order.send(new Pair(this, orderNum));
 }
-if (takeMode == 0) // 零售商取货
+if (takeMode == 0) // 零售商取货模式
 {
-	take.send(new Pair(this, orderNum)); // 向批发商发送要去取货的确认消息
+	take.send(new Pair(this, orderNum));
 }]]></Action>
 				</Event>
 			</Events>
@@ -3158,8 +4204,8 @@ if (takeMode == 0) // 零售商取货
     			<Statistics>
 					<Id>1623325306317</Id>
 					<Name><![CDATA[statisticsLeadTime]]></Name>
-					<Description><![CDATA[提起期的统计量]]></Description>
-					<X>20</X><Y>250</Y>
+					<Description><![CDATA[提前期的统计量]]></Description>
+					<X>-210</X><Y>250</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3180,9 +4226,9 @@ if (takeMode == 0) // 零售商取货
 				</Statistics>
     			<HistogramData>
 					<Id>1623369868209</Id>
-					<Name><![CDATA[histogramleadTime]]></Name>
+					<Name><![CDATA[histogramLeadTime]]></Name>
 					<Description><![CDATA[提前期的直方图]]></Description>
-					<X>120</X><Y>250</Y>
+					<X>-210</X><Y>280</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3221,7 +4267,8 @@ if (takeMode == 0) // 零售商取货
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
-					<OnReceive><![CDATA[receive.receive(new Pair(this, msg));]]></OnReceive>
+					<OnReceive><![CDATA[// 在接收卡车发送的数量信息后，将自身和数量信息发送给自身的port（receive）
+receive.receive(new Pair(this, msg));]]></OnReceive>
 					<HandleReceiveInConnections>false</HandleReceiveInConnections>
 					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
 					<AgentLinkBidirectional>true</AgentLinkBidirectional>
@@ -3254,8 +4301,8 @@ if (takeMode == 0) // 零售商取货
 				<EmbeddedObject>
 					<Id>1623326124957</Id>
 					<Name><![CDATA[truck]]></Name>
-					<Description><![CDATA[零售商的卡车]]></Description>
-					<X>-30</X><Y>40</Y>
+					<Description><![CDATA[根据卡车的起点设置位置]]></Description>
+					<X>-50</X><Y>-50</Y>
 					<Label><X>-20</X><Y>-25</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3348,6 +4395,29 @@ if (takeMode == 0) // 零售商取货
 					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
 
 			<Presentation>
+				<Rectangle>
+					<Id>1623434285644</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-20</X><Y>-20</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[_origin_VA.navigateTo();]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>40</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
 				<Figure3D>
 					<Id>1623032712436</Id>
 					<Name><![CDATA[store]]></Name>
@@ -3402,6 +4472,8 @@ if (takeMode == 0) // 零售商取货
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 点击时就切换到本智能体的视图
+_origin_VA.navigateTo();]]></OnClickCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
@@ -3415,7 +4487,7 @@ if (takeMode == 0) // 零售商取货
     			<Histogram>
 					<Id>1623369736363</Id>
 					<Name><![CDATA[chart]]></Name>
-					<X>250</X><Y>150</Y>
+					<X>70</X><Y>50</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3433,15 +4505,15 @@ if (takeMode == 0) // 零售商取货
 						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>500</Width>
-					<Height>400</Height>
+					<Width>840</Width>
+					<Height>530</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>420</Width>
-						<Height>310</Height>
+						<Width>760</Width>
+						<Height>440</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
 						<GridColor>-12566464</GridColor>
@@ -3466,7 +4538,7 @@ if (takeMode == 0) // 零售商取货
 					</Bars>
 					<HistogramDataExpression>
 					<Id>0</Id>
-					<Expression><![CDATA[histogramleadTime]]></Expression>
+					<Expression><![CDATA[histogramLeadTime]]></Expression>
 						<ColorPDF>-6632142</ColorPDF>
 						<ColorCDF>-9728477</ColorCDF>
 						<ColorLowPercent>-2987746</ColorLowPercent>
@@ -3476,6 +4548,220 @@ if (takeMode == 0) // 零售商取货
 						<Title><![CDATA[Leadtime Statistics]]></Title>							
 					</HistogramDataExpression>
     			</Histogram>
+				<Rectangle>
+					<Id>1623433614431</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 返回主窗体的视图
+main.navigate(main.viewAnimation);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>60</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Polyline>
+					<Id>1623433752939</Id>
+					<Name><![CDATA[polyline2]]></Name>
+					<X>20</X><Y>20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>20</X><Y>0</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Polyline>
+					<Id>1623433752945</Id>
+					<Name><![CDATA[polyline3]]></Name>
+					<X>30</X><Y>10</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>25</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>25</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Rectangle>
+					<Id>1623434515134</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>60</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 如果不是集合中第一个智能体的话，就切换到集合中上一个智能体的视图
+if(getIndex() > 0) {
+	getPopulation().get(getIndex() - 1)._origin_VA.navigateTo();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623434515139</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>110</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<OnClickCode><![CDATA[// 如果不是集合中最后一个智能体的话，就切换到集合中下一个智能体的视图
+if(getIndex() < getPopulation().size() - 1) {
+	getPopulation().get( getIndex()+1 )._origin_VA.navigateTo();
+}]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>50</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-8272897</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Polyline>
+					<Id>1623434515141</Id>
+					<Name><![CDATA[polyline4]]></Name>
+					<X>130</X><Y>35</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>-20</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Polyline>
+					<Id>1623434525463</Id>
+					<Name><![CDATA[polyline5]]></Name>
+					<X>85</X><Y>35</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<FillColor/>
+					<FillMaterial>null</FillMaterial>
+					<Points>
+					   <Point><X>0</X><Y>0</Y><Z>0</Z></Point>
+					   <Point><X>-10</X><Y>-10</Y><Z>0</Z></Point>
+					   <Point><X>0</X><Y>-20</Y><Z>0</Z></Point>
+					</Points>
+					<Closed>false</Closed>
+				</Polyline>
+				<Text>
+					<Id>1623434549730</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>170</X><Y>10</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-12156236</Color>
+					<Text><![CDATA[Retailer]]></Text>
+					<TextCode><![CDATA[this+"\t\t"+this.name]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>26</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
 			</Presentation>
 
 				</Level>
@@ -3486,7 +4772,6 @@ if (takeMode == 0) // 零售商取货
 		<ActiveObjectClass>
 			<Id>1623032747954</Id>
 			<Name><![CDATA[Truck]]></Name>
-			<Description><![CDATA[根据卡车的起点设置位置]]></Description>
 			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
 			<StartupCode><![CDATA[setLocation(origin);]]></StartupCode>
 			<Generic>false</Generic>
@@ -3586,7 +4871,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623033365429</Id>
 					<Name><![CDATA[destination]]></Name>
 					<Description><![CDATA[卡车目的地]]></Description>
-					<X>10</X><Y>150</Y>
+					<X>-140</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3599,7 +4884,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623295441378</Id>
 					<Name><![CDATA[numberToDeliver]]></Name>
 					<Description><![CDATA[卡车运送的货物数量]]></Description>
-					<X>10</X><Y>180</Y>
+					<X>-140</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3612,7 +4897,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623033013578</Id>
 					<Name><![CDATA[capacity]]></Name>
 					<Description><![CDATA[卡车容量]]></Description>
-					<X>10</X><Y>60</Y>
+					<X>-140</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3633,8 +4918,11 @@ if (takeMode == 0) // 零售商取货
 				<Variable Class="Parameter">
 					<Id>1623033254924</Id>
 					<Name><![CDATA[chainLevel]]></Name>
-					<Description><![CDATA[卡车位于供应链的层次]]></Description>
-					<X>10</X><Y>90</Y>
+					<Description><![CDATA[卡车位于供应链的层次
+1：工厂
+2：分销商
+3：零售商]]></Description>
+					<X>-140</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3656,7 +4944,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623043022988</Id>
 					<Name><![CDATA[origin]]></Name>
 					<Description><![CDATA[卡车起点]]></Description>
-					<X>10</X><Y>120</Y>
+					<X>-140</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3678,7 +4966,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623077118156</Id>
 					<Name><![CDATA[orderCollection]]></Name>
 					<Description><![CDATA[订单集合。卡车依次送货]]></Description>
-					<X>10</X><Y>270</Y>
+					<X>-140</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3696,8 +4984,8 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052185974</Id>
 					<Name><![CDATA[moveToDestination]]></Name>
 					<Description><![CDATA[前往订单终点]]></Description>
-					<X>290</X><Y>110</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<X>90</X><Y>40</Y>
+					<Label><X>-10</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3710,7 +4998,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052233781</Id>
 					<Name><![CDATA[unLoading]]></Name>
 					<Description><![CDATA[如果卡车是工厂与批发商的，卡车到达目的地后就向工厂或批发商发送消息，再由它们向批发商或零售商发送消息，告诉它们卡车到了以及运达的量]]></Description>
-					<X>290</X><Y>180</Y>
+					<X>90</X><Y>110</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3725,7 +5013,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052254980</Id>
 					<Name><![CDATA[moveToOrigin]]></Name>
 					<Description><![CDATA[如果卡车是零售商的，则在取货完成返回零售商后告诉零售商到货的量]]></Description>
-					<X>290</X><Y>240</Y>
+					<X>90</X><Y>170</Y>
 					<Label><X>10</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3741,8 +5029,8 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052328730</Id>
 					<Name><![CDATA[wait]]></Name>
 					<Description><![CDATA[如果订单集合不空的话，继续送货]]></Description>
-					<X>290</X><Y>300</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<X>90</X><Y>230</Y>
+					<Label><X>30</X><Y>10</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3756,8 +5044,8 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623078009219</Id>
 					<Name><![CDATA[transitionState]]></Name>
 					<Description><![CDATA[该过渡状态没有实际意义，仅仅是让状态图能够在订单集合不满的情况下一直循环]]></Description>
-					<X>420</X><Y>210</Y>
-					<Label><X>10</X><Y>10</Y></Label>
+					<X>220</X><Y>140</Y>
+					<Label><X>0</X><Y>15</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>true</ShowLabel>
@@ -3768,7 +5056,7 @@ if (takeMode == 0) // 零售商取货
 				<StatechartElement Class="EntryPoint" ParentState="ROOT_NODE">
 					<Id>1623052178351</Id>
 					<Name><![CDATA[statechart]]></Name>
-					<X>340</X><Y>350</Y>
+					<X>140</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3783,7 +5071,7 @@ if (takeMode == 0) // 零售商取货
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1623052238008</Id>
 					<Name><![CDATA[transition]]></Name>
-					<X>340</X><Y>140</Y>
+					<X>140</X><Y>70</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3814,7 +5102,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052273089</Id>
 					<Name><![CDATA[transition1]]></Name>
 					<Description><![CDATA[卸货。卸货时间根据数量决定]]></Description>
-					<X>340</X><Y>210</Y>
+					<X>140</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3844,14 +5132,14 @@ if (takeMode == 0) // 零售商取货
 				<StatechartElement Class="Transition" ParentState="ROOT_NODE">
 					<Id>1623052354194</Id>
 					<Name><![CDATA[transition2]]></Name>
-					<X>340</X><Y>260</Y>
+					<X>140</X><Y>200</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<Points>
-						<Point><X>0</X><Y>10</Y></Point>
-						<Point><X>0</X><Y>40</Y></Point>
+						<Point><X>0</X><Y>0</Y></Point>
+						<Point><X>0</X><Y>30</Y></Point>
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1623052254980" Target="1623052328730" Trigger="arrival">
@@ -3875,7 +5163,7 @@ if (takeMode == 0) // 零售商取货
 					<Id>1623052364508</Id>
 					<Name><![CDATA[transition3]]></Name>
 					<Description><![CDATA[如果集合不空，记录下下一轮的目的地与运送量，去除集合首元素]]></Description>
-					<X>460</X><Y>210</Y>
+					<X>260</X><Y>140</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3886,14 +5174,16 @@ if (takeMode == 0) // 零售商取货
 					</Points>
 					<IconOffset>20.0</IconOffset>
 					<Properties Source="1623078009219" Target="1623052185974" Trigger="condition">
-						<Action><![CDATA[destination = orderCollection.getFirst().getFirst();
+						<Action><![CDATA[// 给目的地和送货数量赋值（来源于订单列表的第一个元素），赋值后删除订单列表的第一个元素
+destination = orderCollection.getFirst().getFirst();
 numberToDeliver = orderCollection.getFirst().getSecond();
 orderCollection.removeFirst();]]></Action>
 						<Timeout Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
 						</Timeout>
-						<Condition><![CDATA[!orderCollection.isEmpty()]]></Condition>
+						<Condition><![CDATA[// 如果订单列表非空
+!orderCollection.isEmpty()]]></Condition>
 						<Rate Class="CodeUnitValue">
 							<Code><![CDATA[1]]></Code>
 							<Unit Class="RateUnits"><![CDATA[PER_DAY]]></Unit>
@@ -3909,7 +5199,7 @@ orderCollection.removeFirst();]]></Action>
 					<Id>1623078036493</Id>
 					<Name><![CDATA[transition4]]></Name>
 					<Description><![CDATA[收到“Go”指令后，进入过渡状态]]></Description>
-					<X>380</X><Y>300</Y>
+					<X>180</X><Y>230</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3937,6 +5227,19 @@ orderCollection.removeFirst();]]></Action>
 					</Properties>	
 				</StatechartElement>
 			</StatechartElements>
+			<DynamicEvents>
+				<DynamicEventClass>
+					<Id>1623052065178</Id>
+					<Name><![CDATA[Unloading]]></Name>
+					<Description><![CDATA[没用吧？]]></Description>
+					<X>-140</X><Y>180</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Action><![CDATA[deliver(destination, numberToDeliver);]]></Action>
+				</DynamicEventClass>
+			</DynamicEvents>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -3944,7 +5247,7 @@ orderCollection.removeFirst();]]></Action>
 					<Id>1623076129144</Id>
 					<Name><![CDATA[deliver]]></Name>
 					<Description><![CDATA[卡车收到送货命令后，决定如何送货。每次送货的信息添加在订单集合中]]></Description>
-					<X>10</X><Y>240</Y>
+					<X>-140</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -3957,7 +5260,7 @@ orderCollection.removeFirst();]]></Action>
 						<Name><![CDATA[number]]></Name>
 						<Type><![CDATA[double]]></Type>
 					</Parameter>
-					<Body><![CDATA[// 货物量大于卡车容量，订单拆解依次添加在集合中
+					<Body><![CDATA[// 如果订单量大于卡车容量，则对订单进行拆分
 while (number > capacity)
 {
 	orderCollection.addLast(
@@ -3969,6 +5272,7 @@ if (number != 0)
 	orderCollection.addLast(
 		new Pair<Agent, Double>(dest, number));
 }
+// 让卡车开始工作
 send("Go", this);]]></Body>
 				</Function>
 			</Functions>
@@ -4111,6 +5415,840 @@ send("Go", this);]]></Body>
 			</Presentation>
 
 		</ActiveObjectClass>
+		<!--   =========   Active Object Class   ========  -->
+		<ActiveObjectClass>
+			<Id>1623644435163</Id>
+			<Name><![CDATA[AnalysisCharts]]></Name>
+			<ClientAreaTopLeft><X>0</X><Y>0</Y></ClientAreaTopLeft>
+			<Generic>false</Generic>
+			<GenericParameter>
+				<Id>1623644435161</Id>
+				<Name><![CDATA[1623644435161]]></Name>
+				<GenericParameterValue Class="CodeValue">
+					<Code><![CDATA[T extends Agent]]></Code>
+				</GenericParameterValue>
+				<GenericParameterLabel><![CDATA[Generic parameter:]]></GenericParameterLabel>
+			</GenericParameter>
+			<FlowChartsUsage>ENTITY</FlowChartsUsage>
+			<SamplesToKeep>100</SamplesToKeep>
+			<LimitNumberOfArrayElements>false</LimitNumberOfArrayElements>
+			<ElementsLimitValue>100</ElementsLimitValue>
+			<MakeDefaultViewArea>true</MakeDefaultViewArea>
+			<SceneGridColor/>
+			<SceneBackgroundColor/>
+			<SceneSkybox>null</SceneSkybox>
+			<AgentProperties>
+	 			<SpaceType>CONTINUOUS</SpaceType>			
+				<EnvironmentDefinesInitialLocation>true</EnvironmentDefinesInitialLocation>
+				<RotateAnimationTowardsMovement>true</RotateAnimationTowardsMovement>
+				<RotateAnimationVertically>false</RotateAnimationVertically>
+				<VelocityCode Class="CodeUnitValue">
+					<Code><![CDATA[10]]></Code>
+					<Unit Class="SpeedUnits"><![CDATA[MPS]]></Unit>
+				</VelocityCode>
+				<PhysicalLength Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalLength>
+				<PhysicalWidth Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalWidth>
+				<PhysicalHeight Class="CodeUnitValue">
+					<Code><![CDATA[1]]></Code>
+					<Unit Class="LengthUnits"><![CDATA[METER]]></Unit>
+				</PhysicalHeight>
+			</AgentProperties>
+			<EnvironmentProperties>
+					<EnableSteps>false</EnableSteps>
+					<StepDurationCode Class="CodeUnitValue">
+						<Code><![CDATA[1.0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[SECOND]]></Unit>
+					</StepDurationCode>
+					<SpaceType>CONTINUOUS</SpaceType>
+					<WidthCode><![CDATA[500]]></WidthCode>
+					<HeightCode><![CDATA[500]]></HeightCode>
+					<ZHeightCode><![CDATA[0]]></ZHeightCode>
+					<ColumnsCountCode><![CDATA[100]]></ColumnsCountCode>
+					<RowsCountCode><![CDATA[100]]></RowsCountCode>
+					<NeigborhoodType>MOORE</NeigborhoodType>
+					<LayoutType>USER_DEF</LayoutType>
+					<LayoutTypeApplyOnStartup>true</LayoutTypeApplyOnStartup>
+					<NetworkType>USER_DEF</NetworkType>
+					<NetworkTypeApplyOnStartup>true</NetworkTypeApplyOnStartup>
+					<ConnectionsPerAgentCode><![CDATA[2]]></ConnectionsPerAgentCode>
+					<ConnectionsRangeCode><![CDATA[50]]></ConnectionsRangeCode>
+					<NeighborLinkFractionCode><![CDATA[0.95]]></NeighborLinkFractionCode>
+					<MCode><![CDATA[10]]></MCode>
+			</EnvironmentProperties>
+			<DatasetsCreationProperties>
+				<AutoCreate>true</AutoCreate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+			</DatasetsCreationProperties>
+			<ScaleRuler>
+				<Id>1623644435159</Id>
+				<Name><![CDATA[scale]]></Name>
+				<X>0</X><Y>-150</Y>
+				<PublicFlag>false</PublicFlag>
+				<PresentationFlag>false</PresentationFlag>
+				<ShowLabel>false</ShowLabel>
+				<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+				<Length>100</Length>
+				<Rotation>0</Rotation>
+				<ScaleType>BASED_ON_LENGTH</ScaleType>
+				<ModelLength>10</ModelLength>
+				<LengthUnits>METER</LengthUnits>
+				<Scale>10</Scale>
+				<InheritedFromParentAgentType>true</InheritedFromParentAgentType>
+			</ScaleRuler>
+			<CurrentLevel>1623644435162</CurrentLevel>
+			<ConnectionsId>1623644435158</ConnectionsId>
+			<Variables>
+				<Variable Class="PlainVariable">
+					<Id>1623644715876</Id>
+					<Name><![CDATA[numOfOrderOfRetailer]]></Name>
+					<X>-230</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1623645582765</Id>
+					<Name><![CDATA[numOfUnfulfilledOrder]]></Name>
+					<X>-230</X><Y>60</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1623646975525</Id>
+					<Name><![CDATA[numOfOrderToFactory]]></Name>
+					<X>-230</X><Y>120</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="PlainVariable">
+					<Id>1623646975527</Id>
+					<Name><![CDATA[numOfAbandonedInventory]]></Name>
+					<X>-230</X><Y>90</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" Constant="false" AccessType="public" StaticVariable="false">
+						<Type><![CDATA[double]]></Type>        
+					</Properties>
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1623746513320</Id>
+					<Name><![CDATA[takeModeOfRetailer]]></Name>
+					<X>-230</X><Y>300</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1623746513318</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+				<Variable Class="Parameter">
+					<Id>1623746525331</Id>
+					<Name><![CDATA[orderModeOfWholesaler]]></Name>
+					<X>-230</X><Y>330</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties SaveInSnapshot="true" ModificatorType="STATIC">
+						<Type><![CDATA[int]]></Type>
+						<UnitType><![CDATA[NONE]]></UnitType>
+						<SdArray>false</SdArray>
+						<ParameterEditor>
+							<Id>1623746525329</Id>
+							<EditorContolType>TEXT_BOX</EditorContolType>
+							<MinSliderValue><![CDATA[0]]></MinSliderValue>
+							<MaxSliderValue><![CDATA[100]]></MaxSliderValue>
+							<DelimeterType>NO_DELIMETER</DelimeterType>
+						</ParameterEditor>
+					</Properties>                 
+				</Variable>
+			</Variables>
+			<Ports>
+				<Port>
+					<Id>1623644447724</Id>
+					<Name><![CDATA[receive]]></Name>
+					<X>200</X><Y>-40</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<IncomingMessageType><![CDATA[Pair<String, Double>]]></IncomingMessageType>
+					<OutgoingMessageType><![CDATA[Object]]></OutgoingMessageType>
+					<CustomPort><![CDATA[false]]></CustomPort>
+					<OnReceiveAction><![CDATA[// 统计量的更新
+if(msg.getFirst() == "numOfOrderOfRetailer")
+	numOfOrderOfRetailer += msg.getSecond();
+else if(msg.getFirst() == "numOfUnfulfilledOrder")
+	numOfUnfulfilledOrder += msg.getSecond();
+else if(msg.getFirst() == "histogramLeadTime")
+	histogramLeadTime.add(msg.getSecond());
+else if(msg.getFirst() == "numOfOrderToFactory")
+	numOfOrderToFactory += msg.getSecond();
+else if(msg.getFirst() == "numOfAbandonedInventory")
+{
+	numOfAbandonedInventory += msg.getSecond();
+	avgAbandonedInventory.update();
+}]]></OnReceiveAction>
+				</Port>
+			</Ports>
+			<Functions>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1623646575976</Id>
+					<Name><![CDATA[getOrderModeOfWholesaler]]></Name>
+					<X>-230</X><Y>270</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[orderModeOfWholesaler]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if(orderModeOfWholesaler == 1)
+	return "定量订货模式";
+else
+	return "定期订货";]]></Body>
+				</Function>
+				<Function AccessType="default" StaticFunction="false">
+					<ReturnModificator>RETURNS_VALUE</ReturnModificator>
+					<ReturnType><![CDATA[String]]></ReturnType>
+					<Id>1623646575978</Id>
+					<Name><![CDATA[getTakeModeOfRetailer]]></Name>
+					<X>-230</X><Y>240</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Parameter>
+						<Name><![CDATA[takeModeOfRetailer]]></Name>
+						<Type><![CDATA[int]]></Type>
+					</Parameter>
+					<Body><![CDATA[if(takeModeOfRetailer == 0)
+	return "	；零售商取货";
+else
+	return "	；分销商送货";]]></Body>
+				</Function>
+			</Functions>
+			<AnalysisData>
+    			<Statistics>
+					<Id>1623645705732</Id>
+					<Name><![CDATA[unfulfillRatio]]></Name>
+					<X>-230</X><Y>150</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
+					<ValueCode><![CDATA[numOfUnfulfilledOrder / numOfOrderOfRetailer]]></ValueCode>
+				</Statistics>
+    			<HistogramData>
+					<Id>1623646755194</Id>
+					<Name><![CDATA[histogramLeadTime]]></Name>
+					<X>-230</X><Y>180</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Value><![CDATA[]]></Value>
+					<NumberOfIntervals>10</NumberOfIntervals>
+					<MinMaxAutodetect>true</MinMaxAutodetect>
+					<RangeMinExpression><![CDATA[0]]></RangeMinExpression>
+					<RangeMaxExpression><![CDATA[1]]></RangeMaxExpression>
+					<InitialIntervalSize><![CDATA[0.1]]></InitialIntervalSize>
+					<CalculateCDF>true</CalculateCDF>
+					<CalculatePercentiles>false</CalculatePercentiles>
+					<LowPercent>10</LowPercent>
+					<HighPercent>10</HighPercent>
+					<Title><![CDATA[]]></Title>
+				</HistogramData>
+    			<Statistics>
+					<Id>1623646975530</Id>
+					<Name><![CDATA[avgAbandonedInventory]]></Name>
+					<X>-230</X><Y>210</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[4]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
+					<ValueCode><![CDATA[numOfAbandonedInventory / numOfOrderToFactory]]></ValueCode>
+				</Statistics>
+			</AnalysisData>
+			<AgentLinks>
+				<AgentLink>
+					<Id>1623644435158</Id>
+					<Name><![CDATA[connections]]></Name>
+					<X>50</X><Y>-50</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<HandleReceiveInConnections>false</HandleReceiveInConnections>
+					<AgentLinkType>COLLECTION_OF_LINKS</AgentLinkType>
+					<AgentLinkBidirectional>true</AgentLinkBidirectional>
+					<MessageType><![CDATA[Object]]></MessageType>
+					<LineStyle>SOLID</LineStyle>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineZOrder>UNDER_AGENTS</LineZOrder>
+					<LineArrow>NONE</LineArrow>
+					<LineArrowPosition>END</LineArrowPosition>
+				</AgentLink>
+			</AgentLinks>
+
+			<ContainerLinks>
+				<ContainerLink>
+					<Id>1623644559024</Id>
+					<Name><![CDATA[main]]></Name>
+					<X>50</X><Y>-100</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<ActiveObjectClass>
+						<PackageName><![CDATA[supplychainmodel]]></PackageName>
+						<ClassName><![CDATA[Main]]></ClassName>
+					</ActiveObjectClass>
+				</ContainerLink>
+			</ContainerLinks>
+
+			<Presentation>
+				<Level>
+					<Id>1623644435162</Id>
+					<Name><![CDATA[level]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<Z>0</Z>
+					<LevelVisibility>DIM_NON_CURRENT</LevelVisibility>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1623646451988</Id>
+					<Name><![CDATA[rectangle4]]></Name>
+					<X>0</X><Y>50</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Lock>true</Lock>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>550</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-2031617</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+    			<PieChart>
+					<Id>1623645818166</Id>
+					<Name><![CDATA[chart]]></Name>
+					<X>20</X><Y>120</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>260</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>60</XOffset>
+						<YOffset>10</YOffset>
+						<Width>140</Width>
+						<Height>140</Height>
+						<BorderColor/>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>40</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<DataItem>
+					<Id>0</Id>
+					<Expression><![CDATA[1 - unfulfillRatio.mean()]]></Expression>
+					<Color>-10496</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Average Fulfilled Order]]></Title>
+					</DataItem>
+					<DataItem>
+					<Id>0</Id>
+					<Expression><![CDATA[unfulfillRatio.mean()]]></Expression>
+					<Color>-6632142</Color>
+					<Expression2Flag>true</Expression2Flag>
+						<Title><![CDATA[Average Unfulfilled Order]]></Title>
+					</DataItem>
+    			</PieChart>
+				<Group>
+					<Id>1623646134074</Id>
+					<Name><![CDATA[group1]]></Name>
+					<X>500</X><Y>30</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+
+			<Presentation>
+				<Rectangle>
+					<Id>1623646134076</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>-500</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5185306</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623646134078</Id>
+					<Name><![CDATA[text9]]></Name>
+					<X>480</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Click any object to inspect]]></Text>
+					<TextCode><![CDATA[getOrderModeOfWholesaler(orderModeOfWholesaler) + getTakeModeOfRetailer(takeModeOfRetailer)]]></TextCode>
+					<Font>
+						<Name>SansSerif</Name>
+						<Size>20</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>RIGHT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1623646134080</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>30</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>170</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623646134082</Id>
+					<Name><![CDATA[text3]]></Name>
+					<X>40</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[// 返回主窗体的端口连接视图
+main.navigate(main.portViewArea);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Ports&Conns]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Rectangle>
+					<Id>1623646134084</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>-100</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>130</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623646134086</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>-250</X><Y>-30</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>150</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12004916</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Text>
+					<Id>1623646134088</Id>
+					<Name><![CDATA[text1]]></Name>
+					<X>-240</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<OnClickCode><![CDATA[// 返回主窗体的视图
+main.navigate(main.viewAnimation);]]></OnClickCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Animation]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623646134090</Id>
+					<Name><![CDATA[text2]]></Name>
+					<X>-90</X><Y>-20</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[Statistics]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623646134092</Id>
+					<Name><![CDATA[text4]]></Name>
+					<X>-485</X><Y>-20</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[SupplyChainModel]]></Text>
+					<Font>
+						<Name>Arial</Name>
+						<Size>24</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+			</Presentation>
+
+				</Group>
+    			<Histogram>
+					<Id>1623646777785</Id>
+					<Name><![CDATA[chart1]]></Name>
+					<X>380</X><Y>130</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>490</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>410</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<ShowPDF>true</ShowPDF>
+					<ShowCDF>false</ShowCDF>
+					<ShowMean>false</ShowMean>
+					<Bars>
+						<Direction>UP</Direction>
+						<RelativeWidth>0.8</RelativeWidth>
+					</Bars>
+					<HistogramDataExpression>
+					<Id>1623646777782</Id>
+					<Expression><![CDATA[histogramLeadTime]]></Expression>
+						<ColorPDF>-6632142</ColorPDF>
+						<ColorCDF>-29696</ColorCDF>
+						<ColorLowPercent>-4343957</ColorLowPercent>
+						<ColorHighPercent>-13447886</ColorHighPercent>
+						<ColorMean>-8097537</ColorMean>
+						<LineWidth>1</LineWidth>						
+						<Title><![CDATA[Lead Time]]></Title>							
+					</HistogramDataExpression>
+    			</Histogram>
+    			<TimePlot>
+					<Id>1623646959728</Id>
+					<Name><![CDATA[plot]]></Name>
+					<X>100</X><Y>390</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1623657600000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>910</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>830</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[40]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Average Abandoned Inventory]]></Title>
+					<Id>1623646959725</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-7667573</Color>
+					<Expression2><![CDATA[avgAbandonedInventory.mean()]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
+			</Presentation>
+
+				</Level>
+			</Presentation>
+			<Areas>
+				<Area>
+					<Id>1623646041753</Id>
+					<Name><![CDATA[viewArea]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<Title><![CDATA[]]></Title>
+					<Width>1000</Width>
+					<Height>600</Height>
+				</Area>
+			</Areas>
+
+		</ActiveObjectClass>
 	</ActiveObjectClasses>	
 	<DifferentialEquationsMethod>EULER</DifferentialEquationsMethod>
 	<MixedEquationsMethod>RK45_NEWTON</MixedEquationsMethod>
@@ -4235,7 +6373,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623036282343</Id>
 					<Name><![CDATA[factoryLongitude]]></Name>
-					<X>-170</X><Y>140</Y>
+					<X>-250</X><Y>30</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -4250,7 +6388,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623036304249</Id>
 					<Name><![CDATA[factoryLatitude]]></Name>
-					<X>-170</X><Y>170</Y>
+					<X>-250</X><Y>60</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>false</PresentationFlag>
@@ -4264,8 +6402,8 @@ send("Go", this);]]></Body>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1623291032891</Id>
-					<Name><![CDATA[capacityOfWarehouse]]></Name>
-					<X>-170</X><Y>200</Y>
+					<Name><![CDATA[capacityOfWholesaler]]></Name>
+					<X>-250</X><Y>90</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4279,8 +6417,8 @@ send("Go", this);]]></Body>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1623291436614</Id>
-					<Name><![CDATA[orderModeOfWarehouse]]></Name>
-					<X>-170</X><Y>230</Y>
+					<Name><![CDATA[orderModeOfWholesaler]]></Name>
+					<X>-250</X><Y>120</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4294,8 +6432,8 @@ send("Go", this);]]></Body>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1623291485210</Id>
-					<Name><![CDATA[orderCycleTimeOfWarehouse]]></Name>
-					<X>-170</X><Y>260</Y>
+					<Name><![CDATA[orderCycleTimeOfWholesaler]]></Name>
+					<X>-250</X><Y>150</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4309,8 +6447,8 @@ send("Go", this);]]></Body>
 				</Variable>
 				<Variable Class="PlainVariable">
 					<Id>1623291564614</Id>
-					<Name><![CDATA[SSOfWarehouse]]></Name>
-					<X>-170</X><Y>290</Y>
+					<Name><![CDATA[SSOfWholesaler]]></Name>
+					<X>-250</X><Y>180</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4325,7 +6463,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623327287945</Id>
 					<Name><![CDATA[capacityOfRetailer]]></Name>
-					<X>-170</X><Y>320</Y>
+					<X>-250</X><Y>210</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4340,7 +6478,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623327613278</Id>
 					<Name><![CDATA[takeModeOfRetailer]]></Name>
-					<X>-170</X><Y>350</Y>
+					<X>-250</X><Y>240</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4355,7 +6493,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623331935183</Id>
 					<Name><![CDATA[avgDemand]]></Name>
-					<X>-170</X><Y>380</Y>
+					<X>-250</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4370,7 +6508,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623332067266</Id>
 					<Name><![CDATA[devDemand]]></Name>
-					<X>-170</X><Y>410</Y>
+					<X>-250</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4385,7 +6523,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623332226761</Id>
 					<Name><![CDATA[truckCapacityOfFactory]]></Name>
-					<X>-170</X><Y>460</Y>
+					<X>-250</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4400,7 +6538,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623332254114</Id>
 					<Name><![CDATA[truckCapacityOfWholesaler]]></Name>
-					<X>-170</X><Y>490</Y>
+					<X>-250</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4415,7 +6553,7 @@ send("Go", this);]]></Body>
 				<Variable Class="PlainVariable">
 					<Id>1623332260824</Id>
 					<Name><![CDATA[truckCapacityOfRetailer]]></Name>
-					<X>-170</X><Y>520</Y>
+					<X>-250</X><Y>390</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4430,10 +6568,120 @@ send("Go", this);]]></Body>
 			</Variables>
 
 			<Presentation>
+				<Image>
+					<Id>1623469570374</Id>
+					<Name><![CDATA[image]]></Name>
+					<X>175</X><Y>50</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>825</Width>
+					<Height>550</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[supplychainmodel]]></PackageName>
+							<ClassName><![CDATA[map.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Rectangle>
+					<Id>1623467763722</Id>
+					<Name><![CDATA[rectangle]]></Name>
+					<X>0</X><Y>70</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>440</Width>
+					<Height>530</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-1</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623468897196</Id>
+					<Name><![CDATA[rectangle3]]></Name>
+					<X>0</X><Y>340</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>440</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12525360</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623467943478</Id>
+					<Name><![CDATA[rectangle2]]></Name>
+					<X>0</X><Y>50</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor>-16777216</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>440</Width>
+					<Height>40</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-12525360</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
+				<Rectangle>
+					<Id>1623467420190</Id>
+					<Name><![CDATA[rectangle1]]></Name>
+					<X>0</X><Y>0</Y>
+					<Label><X>10</X><Y>10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>1</LineWidth>
+					<LineColor/>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<Width>1000</Width>
+					<Height>50</Height>
+					<Rotation>0.0</Rotation>
+					<FillColor>-5185306</FillColor>
+					<FillMaterial>null</FillMaterial>
+				</Rectangle>
 				<Text>
 					<Id>1623032419019</Id>
 					<Name><![CDATA[text]]></Name>
-					<X>50</X><Y>30</Y>
+					<X>10</X><Y>10</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4442,12 +6690,12 @@ send("Go", this);]]></Body>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<Color>-12490271</Color>
+					<Color>-1</Color>
 					<Text><![CDATA[SupplyChainModel]]></Text>
 					<Font>
-						<Name>SansSerif</Name>
+						<Name>Arial</Name>
 						<Size>24</Size>
-						<Style>0</Style>
+						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -4455,13 +6703,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623036099210</Id>
 					<Name><![CDATA[editbox]]></Name>
-					<X>150</X><Y>110</Y>
+					<X>100</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="60" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4477,13 +6725,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623036125785</Id>
 					<Name><![CDATA[editbox1]]></Name>
-					<X>150</X><Y>150</Y>
+					<X>100</X><Y>150</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="60" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4496,72 +6744,9 @@ send("Go", this);]]></Body>
 					</ExtendedProperties>
 				</Control>
 				<Text>
-					<Id>1623036147655</Id>
-					<Name><![CDATA[text1]]></Name>
-					<X>50</X><Y>110</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[工厂位置]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623036220945</Id>
-					<Name><![CDATA[text2]]></Name>
-					<X>100</X><Y>110</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[经度]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623036236850</Id>
-					<Name><![CDATA[text3]]></Name>
-					<X>100</X><Y>150</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[纬度]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
 					<Id>1623290902845</Id>
 					<Name><![CDATA[text4]]></Name>
-					<X>50</X><Y>90</Y>
+					<X>20</X><Y>60</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -4570,54 +6755,12 @@ send("Go", this);]]></Body>
 					<EmbeddedIcon>false</EmbeddedIcon>
 					<Z>0</Z>
 					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
+					<Color>-1</Color>
 					<Text><![CDATA[工厂]]></Text>
 					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623290914150</Id>
-					<Name><![CDATA[text5]]></Name>
-					<X>50</X><Y>230</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[分销商]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623290987697</Id>
-					<Name><![CDATA[text6]]></Name>
-					<X>50</X><Y>250</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[库存容量]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
+						<Name>微軟正黑體</Name>
+						<Size>18</Size>
+						<Style>1</Style>
 					</Font>
 					<Alignment>LEFT</Alignment>
 				</Text>
@@ -4625,13 +6768,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623291012934</Id>
 					<Name><![CDATA[editbox2]]></Name>
-					<X>100</X><Y>250</Y>
+					<X>100</X><Y>405</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="30">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4640,41 +6783,20 @@ send("Go", this);]]></Body>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<LinkTo>true</LinkTo>
-						<Link>capacityOfWarehouse</Link>
+						<Link>capacityOfWholesaler</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623291097849</Id>
-					<Name><![CDATA[text7]]></Name>
-					<X>50</X><Y>290</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[订货模式]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="RadioButtons">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623291145769</Id>
 					<Name><![CDATA[radio]]></Name>
-					<X>100</X><Y>290</Y>
+					<X>95</X><Y>460</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150" Height="50">
+					<BasicProperties Width="90" Height="50">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -4685,41 +6807,20 @@ send("Go", this);]]></Body>
 						<Button><![CDATA[定期订货]]></Button>
 						<Button><![CDATA[定量订货]]></Button>
 						<LinkTo>true</LinkTo>
-						<Link>orderModeOfWarehouse</Link>
+						<Link>orderModeOfWholesaler</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623291226988</Id>
-					<Name><![CDATA[text8]]></Name>
-					<X>100</X><Y>340</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[定期订货]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623291265213</Id>
 					<Name><![CDATA[editbox3]]></Name>
-					<X>150</X><Y>360</Y>
+					<X>350</X><Y>455</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4728,83 +6829,20 @@ send("Go", this);]]></Body>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<LinkTo>true</LinkTo>
-						<Link>orderCycleTimeOfWarehouse</Link>
+						<Link>orderCycleTimeOfWholesaler</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623291282462</Id>
-					<Name><![CDATA[text9]]></Name>
-					<X>150</X><Y>340</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[订货期]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623291522697</Id>
-					<Name><![CDATA[text10]]></Name>
-					<X>100</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[定量订货]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623291540396</Id>
-					<Name><![CDATA[text11]]></Name>
-					<X>150</X><Y>400</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[安全库存]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623291555274</Id>
 					<Name><![CDATA[editbox4]]></Name>
-					<X>150</X><Y>420</Y>
+					<X>350</X><Y>485</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4813,62 +6851,20 @@ send("Go", this);]]></Body>
 					<ExtendedProperties>
 						<Font Name="Dialog" Size="11" Style="0"/>
 						<LinkTo>true</LinkTo>
-						<Link>SSOfWarehouse</Link>
+						<Link>SSOfWholesaler</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623327017420</Id>
-					<Name><![CDATA[text12]]></Name>
-					<X>350</X><Y>90</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[零售商]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623327017422</Id>
-					<Name><![CDATA[text13]]></Name>
-					<X>350</X><Y>110</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[库存容量]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623327017424</Id>
 					<Name><![CDATA[editbox5]]></Name>
-					<X>400</X><Y>110</Y>
+					<X>345</X><Y>110</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4880,38 +6876,17 @@ send("Go", this);]]></Body>
 						<Link>capacityOfRetailer</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623327017426</Id>
-					<Name><![CDATA[text14]]></Name>
-					<X>350</X><Y>150</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[取货模式]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="RadioButtons">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623327017428</Id>
 					<Name><![CDATA[radio1]]></Name>
-					<X>400</X><Y>150</Y>
+					<X>345</X><Y>150</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="150" Height="50">
+					<BasicProperties Width="85" Height="45">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<TextColor/>
 						<Enabled>true</Enabled>
@@ -4925,59 +6900,17 @@ send("Go", this);]]></Body>
 						<Link>takeModeOfRetailer</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623331807708</Id>
-					<Name><![CDATA[text15]]></Name>
-					<X>350</X><Y>200</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[需求均值]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623331856910</Id>
-					<Name><![CDATA[text16]]></Name>
-					<X>350</X><Y>240</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[需求方差]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
 				<Control Type="EditBox">
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623331890859</Id>
 					<Name><![CDATA[editbox6]]></Name>
-					<X>400</X><Y>200</Y>
+					<X>345</X><Y>210</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -4993,13 +6926,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623331903337</Id>
 					<Name><![CDATA[editbox7]]></Name>
-					<X>400</X><Y>240</Y>
+					<X>345</X><Y>250</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -5011,80 +6944,17 @@ send("Go", this);]]></Body>
 						<Link>devDemand</Link>
 					</ExtendedProperties>
 				</Control>
-				<Text>
-					<Id>1623332295768</Id>
-					<Name><![CDATA[text17]]></Name>
+				<Control Type="EditBox">
+				 	<EmbeddedIcon>false</EmbeddedIcon>				
+					<Id>1623332337537</Id>
+					<Name><![CDATA[editbox8]]></Name>
 					<X>100</X><Y>190</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[卡车容量]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623332317945</Id>
-					<Name><![CDATA[text18]]></Name>
-					<X>100</X><Y>460</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[卡车容量]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Text>
-					<Id>1623332328906</Id>
-					<Name><![CDATA[text19]]></Name>
-					<X>350</X><Y>280</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
-					<DrawMode>SHAPE_DRAW_2D</DrawMode>
-					<EmbeddedIcon>false</EmbeddedIcon>
-					<Z>0</Z>
-					<Rotation>0.0</Rotation>
-					<Color>-16777216</Color>
-					<Text><![CDATA[卡车容量]]></Text>
-					<Font>
-						<Name>SansSerif</Name>
-						<Size>10</Size>
-						<Style>0</Style>
-					</Font>
-					<Alignment>LEFT</Alignment>
-				</Text>
-				<Control Type="EditBox">
-				 	<EmbeddedIcon>false</EmbeddedIcon>				
-					<Id>1623332337537</Id>
-					<Name><![CDATA[editbox8]]></Name>
-					<X>150</X><Y>190</Y>
-					<Label><X>0</X><Y>-10</Y></Label>
-					<PublicFlag>true</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="60" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -5100,13 +6970,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623332358800</Id>
 					<Name><![CDATA[editbox9]]></Name>
-					<X>150</X><Y>460</Y>
+					<X>100</X><Y>535</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -5122,13 +6992,13 @@ send("Go", this);]]></Body>
 				 	<EmbeddedIcon>false</EmbeddedIcon>				
 					<Id>1623332372067</Id>
 					<Name><![CDATA[editbox10]]></Name>
-					<X>400</X><Y>280</Y>
+					<X>345</X><Y>285</Y>
 					<Label><X>0</X><Y>-10</Y></Label>
 					<PublicFlag>true</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
 					<ShowLabel>false</ShowLabel>
 					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
-					<BasicProperties Width="100" Height="30">
+					<BasicProperties Width="65" Height="25">
                         <EmbeddedIcon>false</EmbeddedIcon>	
 						<FillColor/>
 						<TextColor/>
@@ -5140,6 +7010,367 @@ send("Go", this);]]></Body>
 						<Link>truckCapacityOfRetailer</Link>
 					</ExtendedProperties>
 				</Control>
+				<Image>
+					<Id>1623467524107</Id>
+					<Name><![CDATA[image1]]></Name>
+					<X>860</X><Y>0</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Width>140</Width>
+					<Height>44.8</Height>
+					<Rotation>0.0</Rotation>
+					<ImageFiles>
+						<ImageResourceReference>
+							<PackageName><![CDATA[supplychainmodel]]></PackageName>
+							<ClassName><![CDATA[TJU.png]]></ClassName>
+						</ImageResourceReference>
+					</ImageFiles>
+					<OriginalSize>false</OriginalSize>
+				</Image>
+				<Text>
+					<Id>1623468490889</Id>
+					<Name><![CDATA[text20]]></Name>
+					<X>20</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[经度]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468556601</Id>
+					<Name><![CDATA[text21]]></Name>
+					<X>20</X><Y>150</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[纬度]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468606816</Id>
+					<Name><![CDATA[text22]]></Name>
+					<X>20</X><Y>190</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[卡车容量]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468713047</Id>
+					<Name><![CDATA[text17]]></Name>
+					<X>260</X><Y>60</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[零售商]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>18</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468742628</Id>
+					<Name><![CDATA[text23]]></Name>
+					<X>260</X><Y>110</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[库存容量]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468753885</Id>
+					<Name><![CDATA[text24]]></Name>
+					<X>260</X><Y>150</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[取货模式]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468814763</Id>
+					<Name><![CDATA[text25]]></Name>
+					<X>260</X><Y>250</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[需求方差]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468817322</Id>
+					<Name><![CDATA[text26]]></Name>
+					<X>260</X><Y>210</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[需求均值]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468921828</Id>
+					<Name><![CDATA[text12]]></Name>
+					<X>20</X><Y>350</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-1</Color>
+					<Text><![CDATA[分销商]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>18</Size>
+						<Style>1</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623468957419</Id>
+					<Name><![CDATA[text27]]></Name>
+					<X>20</X><Y>405</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[库存容量]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623469001305</Id>
+					<Name><![CDATA[text28]]></Name>
+					<X>260</X><Y>285</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[卡车容量]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623469108704</Id>
+					<Name><![CDATA[text29]]></Name>
+					<X>20</X><Y>465</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[订货模式]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623469152483</Id>
+					<Name><![CDATA[text30]]></Name>
+					<X>200</X><Y>460</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[定期订货  订货期]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623469246357</Id>
+					<Name><![CDATA[text31]]></Name>
+					<X>200</X><Y>485</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[定量订货  安全库存]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Text>
+					<Id>1623469289869</Id>
+					<Name><![CDATA[text32]]></Name>
+					<X>20</X><Y>530</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<Rotation>0.0</Rotation>
+					<Color>-16777216</Color>
+					<Text><![CDATA[卡车容量]]></Text>
+					<Font>
+						<Name>微軟正黑體</Name>
+						<Size>16</Size>
+						<Style>0</Style>
+					</Font>
+					<Alignment>LEFT</Alignment>
+				</Text>
+				<Line>
+					<Id>1623469503412</Id>
+					<Name><![CDATA[line]]></Name>
+					<X>200</X><Y>50</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Z>0</Z>
+					<ZHeight>10</ZHeight>
+					<LineWidth>2</LineWidth>
+					<LineColor>-1</LineColor>
+					<LineMaterial>null</LineMaterial>
+					<LineStyle>SOLID</LineStyle>
+					<BeginArrowSize>1</BeginArrowSize>
+					<BeginArrowStyle>0</BeginArrowStyle>
+					<EndArrowSize>1</EndArrowSize>
+					<EndArrowStyle>0</EndArrowStyle>
+					<Dx>0</Dx>
+					<Dy>40</Dy>
+					<Dz>0</Dz>
+				</Line>
 			</Presentation>
 
 			<Parameters>			
@@ -5156,27 +7387,27 @@ send("Go", this);]]></Body>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[capacityOfWarehouse]]></ParameterName>
+					<ParameterName><![CDATA[capacityOfWholesaler]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[capacityOfWarehouse]]></Code>
+						<Code><![CDATA[capacityOfWholesaler]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[SSOfWarehouse]]></ParameterName>
+					<ParameterName><![CDATA[SSOfWholesaler]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[SSOfWarehouse]]></Code>
+						<Code><![CDATA[SSOfWholesaler]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[orderModeOfWarehouse]]></ParameterName>
+					<ParameterName><![CDATA[orderModeOfWholesaler]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[orderModeOfWarehouse]]></Code>
+						<Code><![CDATA[orderModeOfWholesaler]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
-					<ParameterName><![CDATA[orderCycleTimeOfWarehouse]]></ParameterName>
+					<ParameterName><![CDATA[orderCycleTimeOfWholesaler]]></ParameterName>
 					<ParameterValue Class="CodeValue">
-						<Code><![CDATA[orderCycleTimeOfWarehouse]]></Code>
+						<Code><![CDATA[orderCycleTimeOfWholesaler]]></Code>
 					</ParameterValue>
 				</Parameter>
 				<Parameter>
@@ -5264,6 +7495,14 @@ send("Go", this);]]></Body>
 		<Resource>
 			<Path><![CDATA[Retailers.xlsx]]></Path>
 			<ReferencedFromUserCode>true</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[TJU.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
+		</Resource>
+		<Resource>
+			<Path><![CDATA[map.png]]></Path>
+			<ReferencedFromUserCode>false</ReferencedFromUserCode>
 		</Resource>
 	</ModelResources>
     <RequiredLibraryReference>
