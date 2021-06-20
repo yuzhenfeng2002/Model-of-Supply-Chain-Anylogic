@@ -2888,7 +2888,7 @@ if (msg.getFirst().wholesaler == this.name) // 如果订单是由自己的下游
 					<Id>1623293296143</Id>
 					<Name><![CDATA[check]]></Name>
 					<Description><![CDATA[定期订货模式中，每循环周期进行下单]]></Description>
-					<X>-450</X><Y>40</Y>
+					<X>-450</X><Y>250</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -2922,6 +2922,38 @@ if (orderMode == 0)
 	analyse.send(new Pair("numOfOrderToFactory", 1.0));
 }]]></Action>
 				</Event>
+				<Event>
+					<Id>1624183400542</Id>
+					<Name><![CDATA[inventoryStat]]></Name>
+					<X>-450</X><Y>280</Y>
+					<Label><X>10</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<Properties TriggerType="timeout" Mode="cyclic">
+						<Timeout Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+						</Timeout>
+						<Rate Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="RateUnits"><![CDATA[PER_HOUR]]></Unit>
+						</Rate>
+						<OccurrenceAtTime>true</OccurrenceAtTime>
+						<OccurrenceDate>1624262400000</OccurrenceDate>
+						<OccurrenceTime Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[WEEK]]></Unit>
+						</OccurrenceTime>
+						<RecurrenceCode Class="CodeUnitValue">
+							<Code><![CDATA[1]]></Code>
+							<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+						</RecurrenceCode>
+						<Condition><![CDATA[false]]></Condition>
+					</Properties>
+					<Action><![CDATA[analyse.send(new Pair("avgInventory", avgInventory.mean()));
+checkInventory();]]></Action>
+				</Event>
 			</Events>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
@@ -2938,7 +2970,7 @@ if (orderMode == 0)
 					<Body><![CDATA[// 针对定量订货模型
 // 如果库存小于安全库存+提前期*平均需求，且上一个给工厂的订单已经到货
 // 向工厂发送订单，订单量为分销商容量
-if (currentInventory < avgLeadTime.mean()*avgDemand.mean() + SS)
+if (currentInventory <= avgLeadTime.mean()*avgDemand.mean() + SS)
 {
 	if (isLastOrderReceived == true)
 	{
@@ -5564,7 +5596,7 @@ send("Go", this);]]></Body>
 				<Variable Class="Parameter">
 					<Id>1623746513320</Id>
 					<Name><![CDATA[takeModeOfRetailer]]></Name>
-					<X>-230</X><Y>300</Y>
+					<X>-230</X><Y>330</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5585,7 +5617,7 @@ send("Go", this);]]></Body>
 				<Variable Class="Parameter">
 					<Id>1623746525331</Id>
 					<Name><![CDATA[orderModeOfWholesaler]]></Name>
-					<X>-230</X><Y>330</Y>
+					<X>-230</X><Y>360</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5617,18 +5649,23 @@ send("Go", this);]]></Body>
 					<OutgoingMessageType><![CDATA[Object]]></OutgoingMessageType>
 					<CustomPort><![CDATA[false]]></CustomPort>
 					<OnReceiveAction><![CDATA[// 统计量的更新
-if(msg.getFirst() == "numOfOrderOfRetailer")
+if (msg.getFirst() == "numOfOrderOfRetailer")
 	numOfOrderOfRetailer += msg.getSecond();
-else if(msg.getFirst() == "numOfUnfulfilledOrder")
+else if (msg.getFirst() == "numOfUnfulfilledOrder")
 	numOfUnfulfilledOrder += msg.getSecond();
-else if(msg.getFirst() == "histogramLeadTime")
+else if (msg.getFirst() == "histogramLeadTime")
 	histogramLeadTime.add(msg.getSecond());
-else if(msg.getFirst() == "numOfOrderToFactory")
+else if (msg.getFirst() == "numOfOrderToFactory")
 	numOfOrderToFactory += msg.getSecond();
-else if(msg.getFirst() == "numOfAbandonedInventory")
+else if (msg.getFirst() == "numOfAbandonedInventory")
 {
 	numOfAbandonedInventory += msg.getSecond();
 	avgAbandonedInventory.update();
+}
+else if (msg.getFirst() == "avgInventory")
+{
+	avgInventory.add(msg.getSecond());
+	avgInventory.update();
 }]]></OnReceiveAction>
 				</Port>
 			</Ports>
@@ -5638,7 +5675,7 @@ else if(msg.getFirst() == "numOfAbandonedInventory")
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1623646575976</Id>
 					<Name><![CDATA[getOrderModeOfWholesaler]]></Name>
-					<X>-230</X><Y>270</Y>
+					<X>-230</X><Y>300</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5657,7 +5694,7 @@ else
 					<ReturnType><![CDATA[String]]></ReturnType>
 					<Id>1623646575978</Id>
 					<Name><![CDATA[getTakeModeOfRetailer]]></Name>
-					<X>-230</X><Y>240</Y>
+					<X>-230</X><Y>270</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5676,7 +5713,7 @@ else
     			<Statistics>
 					<Id>1623645705732</Id>
 					<Name><![CDATA[unfulfillRatio]]></Name>
-					<X>-230</X><Y>150</Y>
+					<X>-230</X><Y>180</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5698,7 +5735,7 @@ else
     			<HistogramData>
 					<Id>1623646755194</Id>
 					<Name><![CDATA[histogramLeadTime]]></Name>
-					<X>-230</X><Y>180</Y>
+					<X>-230</X><Y>210</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5729,7 +5766,7 @@ else
     			<Statistics>
 					<Id>1623646975530</Id>
 					<Name><![CDATA[avgAbandonedInventory]]></Name>
-					<X>-230</X><Y>210</Y>
+					<X>-230</X><Y>240</Y>
 					<Label><X>15</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
 					<PresentationFlag>true</PresentationFlag>
@@ -5747,6 +5784,27 @@ else
 					</RecurrenceCode>
 					<Discrete>true</Discrete>
 					<ValueCode><![CDATA[numOfAbandonedInventory / numOfOrderToFactory]]></ValueCode>
+				</Statistics>
+    			<Statistics>
+					<Id>1624183190291</Id>
+					<Name><![CDATA[avgInventory]]></Name>
+					<X>-230</X><Y>150</Y>
+					<Label><X>15</X><Y>0</Y></Label>
+					<PublicFlag>false</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>true</ShowLabel>
+					<AutoUpdate>false</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1624262400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[0]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
+					</RecurrenceCode>
+					<Discrete>true</Discrete>
 				</Statistics>
 			</AnalysisData>
 			<AgentLinks>
@@ -6183,14 +6241,14 @@ main.navigate(main.viewAnimation);]]></OnClickCode>
 						<Unit Class="TimeUnits"><![CDATA[HOUR]]></Unit>
 					</RecurrenceCode>
 					<EmbeddedIcon>false</EmbeddedIcon>
-					<Width>910</Width>
+					<Width>350</Width>
 					<Height>210</Height>
 					<BackgroundColor/>
 					<BorderColor/>
 					<ChartArea>
 						<XOffset>50</XOffset>
 						<YOffset>30</YOffset>
-						<Width>830</Width>
+						<Width>270</Width>
 						<Height>120</Height>
 						<BackgroundColor>-1</BackgroundColor>
 						<BorderColor>-16777216</BorderColor>
@@ -6220,6 +6278,73 @@ main.navigate(main.viewAnimation);]]></OnClickCode>
 					<Expression><![CDATA[my_dataset]]></Expression>
 					<Color>-7667573</Color>
 					<Expression2><![CDATA[avgAbandonedInventory.mean()]]></Expression2>
+					<Expression2Flag>true</Expression2Flag>
+						<PointStyle>NONE</PointStyle>
+						<LineWidth>1.0</LineWidth>
+					</DatasetExpression>
+					<SamplesToKeep>100</SamplesToKeep>
+					<TimeWindowExpression><![CDATA[100]]></TimeWindowExpression>
+					<FillAreaUnderLine>false</FillAreaUnderLine>
+					<LabelFormat>MODEL_TIME_UNITS</LabelFormat>
+    			</TimePlot>
+    			<TimePlot>
+					<Id>1624183510910</Id>
+					<Name><![CDATA[plot1]]></Name>
+					<X>520</X><Y>390</Y>
+					<Label><X>0</X><Y>-10</Y></Label>
+					<PublicFlag>true</PublicFlag>
+					<PresentationFlag>true</PresentationFlag>
+					<ShowLabel>false</ShowLabel>
+					<DrawMode>SHAPE_DRAW_2D3D</DrawMode>
+					<AutoUpdate>true</AutoUpdate>
+					<OccurrenceAtTime>true</OccurrenceAtTime>
+					<OccurrenceDate>1624262400000</OccurrenceDate>
+					<OccurrenceTime Class="CodeUnitValue">
+						<Code><![CDATA[2]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</OccurrenceTime>
+					<RecurrenceCode Class="CodeUnitValue">
+						<Code><![CDATA[1]]></Code>
+						<Unit Class="TimeUnits"><![CDATA[DAY]]></Unit>
+					</RecurrenceCode>
+					<EmbeddedIcon>false</EmbeddedIcon>
+					<Width>340</Width>
+					<Height>210</Height>
+					<BackgroundColor/>
+					<BorderColor/>
+					<ChartArea>
+						<XOffset>50</XOffset>
+						<YOffset>30</YOffset>
+						<Width>260</Width>
+						<Height>120</Height>
+						<BackgroundColor>-1</BackgroundColor>
+						<BorderColor>-16777216</BorderColor>
+						<GridColor>-12566464</GridColor>
+					</ChartArea>
+					<Legend>
+						<Place>SOUTH</Place>
+						<TextColor>-16777216</TextColor>
+						<Size>30</Size>
+					</Legend>
+					<Labels>
+						<HorLabelsPosition>DEFAULT</HorLabelsPosition>
+						<VerLabelsPosition>DEFAULT</VerLabelsPosition>
+						<TextColor>-12566464</TextColor>
+					</Labels>
+					<ShowLegend>true</ShowLegend>
+					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
+					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
+					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
+					<VerScaleType>AUTO</VerScaleType>
+					<DrawLine>true</DrawLine>
+					<Interpolation>LINEAR</Interpolation>
+					<DatasetExpression>  
+						<Title><![CDATA[Average Inventory]]></Title>
+					<Id>0</Id>
+					<Expression><![CDATA[my_dataset]]></Expression>
+					<Color>-8097537</Color>
+					<Expression2><![CDATA[avgInventory.mean()]]></Expression2>
 					<Expression2Flag>true</Expression2Flag>
 						<PointStyle>NONE</PointStyle>
 						<LineWidth>1.0</LineWidth>
