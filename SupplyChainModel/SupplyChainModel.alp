@@ -2925,6 +2925,7 @@ if (orderMode == 0)
 				<Event>
 					<Id>1624183400542</Id>
 					<Name><![CDATA[inventoryStat]]></Name>
+					<Description><![CDATA[发送库存信息给“分析”智能体]]></Description>
 					<X>-450</X><Y>280</Y>
 					<Label><X>10</X><Y>0</Y></Label>
 					<PublicFlag>false</PublicFlag>
@@ -2951,8 +2952,7 @@ if (orderMode == 0)
 						</RecurrenceCode>
 						<Condition><![CDATA[false]]></Condition>
 					</Properties>
-					<Action><![CDATA[analyse.send(new Pair("avgInventory", avgInventory.mean()));
-checkInventory();]]></Action>
+					<Action><![CDATA[analyse.send(new Pair("avgInventory", avgInventory.mean()));]]></Action>
 				</Event>
 			</Events>
 			<Functions>
@@ -5259,19 +5259,6 @@ orderCollection.removeFirst();]]></Action>
 					</Properties>	
 				</StatechartElement>
 			</StatechartElements>
-			<DynamicEvents>
-				<DynamicEventClass>
-					<Id>1623052065178</Id>
-					<Name><![CDATA[Unloading]]></Name>
-					<Description><![CDATA[没用吧？]]></Description>
-					<X>-140</X><Y>180</Y>
-					<Label><X>10</X><Y>0</Y></Label>
-					<PublicFlag>false</PublicFlag>
-					<PresentationFlag>true</PresentationFlag>
-					<ShowLabel>true</ShowLabel>
-					<Action><![CDATA[deliver(destination, numberToDeliver);]]></Action>
-				</DynamicEventClass>
-			</DynamicEvents>
 			<Functions>
 				<Function AccessType="default" StaticFunction="false">
 					<ReturnModificator>VOID</ReturnModificator>
@@ -6334,9 +6321,9 @@ main.navigate(main.viewAnimation);]]></OnClickCode>
 					<ShowLegend>true</ShowLegend>
 					<TimeWindowsMovementType>MOVEMENT_WITH_TIME</TimeWindowsMovementType>		
 					<TimeWindowUnits>MODEL_TIME_UNIT</TimeWindowUnits>
-					<VerScaleFromExpression><![CDATA[0]]></VerScaleFromExpression>
-					<VerScaleToExpression><![CDATA[1]]></VerScaleToExpression>
-					<VerScaleType>AUTO</VerScaleType>
+					<VerScaleFromExpression><![CDATA[490]]></VerScaleFromExpression>
+					<VerScaleToExpression><![CDATA[600]]></VerScaleToExpression>
+					<VerScaleType>FIXED</VerScaleType>
 					<DrawLine>true</DrawLine>
 					<Interpolation>LINEAR</Interpolation>
 					<DatasetExpression>  
