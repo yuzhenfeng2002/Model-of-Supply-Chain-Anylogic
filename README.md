@@ -1,2 +1,3 @@
-# Model-of-Supply-Chain-Anylogic
+# Simulation Model of Supply Chain Using Anylogic
  
+The simulation model is a project of one of my courses. It models a three-level supply chain, where retailers can order from wholesalers based on demand and wholesalers can order from the factory if the inventory is not enough. There are two modes of retailers' behavior. One is that the retailer waits for the wholesaler to send goods to it, the other is it picks up its goods from the wholesaler itself. There are also two modes of the wholesalers' ordering strategy. One is the Periodic Order Method, the other is the Quantitative Order Method. The location of the retailers and wholesalers can be set in the two excel files in the repository. You can see the details of the model in the PDF file named "课程设计报告".
